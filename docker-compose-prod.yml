@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  client:
+    container_name: client
+    image: euphony_client
+    build:
+      context: ./
+      dockerfile: infra/prod/docker/client/Dockerfile
+
+  nginx:
+    container_name: nginx
+    image: euphony_nginx
+    restart: always
+    build:
+      context: ./
+      dockerfile: infra/prod/docker/nginx/Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - service
+
+  service:
+    container_name: service
+    image: euphony_service
+    build:
+      context: ./
+      dockerfile: infra/prod/docker/service/Dockerfile
+    env_file:
+    - ./service/.env

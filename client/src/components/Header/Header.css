@@ -1,0 +1,56 @@
+.Main-header {
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 8px #f0f1f2;
+    box-shadow: 0 2px 8px #f0f1f2;
+}
+
+.Main-header-container {
+    display: flex;
+    height: 70px;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0 170px;
+}
+
+.Logo-wrapper {
+    flex: 1;
+    text-align: left;
+}
+
+.User-wrapper {
+    flex: 1;
+    text-align: right;
+}
+
+/* 
+  Tablets, ipads
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Main-header-container {
+        padding: 0 45px;
+    }
+}
+
+/* 
+  Low resolution tablets, mobiles
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .Main-header-container {
+        padding: 0 30px;
+    }
+}
+
+/* 
+  Most of the smartphones, mobiles
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .Main-header-container {
+        padding: 0 15px;
+    }
+}

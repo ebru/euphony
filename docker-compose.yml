@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  client:
+    container_name: client
+    image: euphony_client
+    build:
+      context: ./
+      dockerfile: infra/dev/docker/client/Dockerfile
+    volumes:
+      - ./client/:/var/www/
+      - /var/www/node_modules
+
+  nginx:
+    container_name: nginx
+    image: euphony_nginx
+    restart: always
+    build:
+      context: ./
+      dockerfile: infra/dev/docker/nginx/Dockerfile
+    volumes:
+      - ./client/:/var/www/
+      - ./service/:/usr/src/service
+      - ./infra/dev/docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - 80:80
+    depends_on:
+      - service
+
+  service:
+    container_name: service
+    image: euphony_service
+    build:
+      context: ./
+      dockerfile: infra/dev/docker/service/Dockerfile
+    volumes:
+      - ./service/:/usr/src/service
+      - /usr/src/service/node_modules
+    env_file:
+    - ./service/.env
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: mongo:4.2
+    restart: always
+    volumes:
+    - ./service/data/db:/data/db
+    ports:
+    - 27017:27017

@@ -1,0 +1,7 @@
+.dockerignore
+.git
+.gitignore
+./client/node_modules
+./client/build
+./service/node_modules
+./service/data

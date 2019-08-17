@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "client",
+        "image": "ebrukaya/euphony_client",
+        "hostname": "client",
+        "essential": false,
+        "memory": 128
+      },
+      {
+        "name": "nginx",
+        "image": "ebrukaya/euphony_nginx",
+        "hostname": "nginx",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ],
+        "links": ["client", "service"],
+        "memory": 128
+      },
+      {
+        "name": "service",
+        "image": "ebrukaya/euphony_service",
+        "hostname": "service",
+        "essential": false,
+        "memory": 128
+      }
+    ]
+  }
