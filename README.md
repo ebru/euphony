@@ -17,6 +17,8 @@ http://euphony.eu-west-1.elasticbeanstalk.com/
 - MongoDB for database
 - GraphQL for API connection
 
+![Scheme](client/public/assets/images/demo.gif)
+
 ---
 
 ### euphony 
