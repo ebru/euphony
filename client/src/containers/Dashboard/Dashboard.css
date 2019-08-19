@@ -11,35 +11,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #444;
-  padding: 0 170px;
-}
-
-/* 
-  Tablets, ipads
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .Dashboard-container {
-      padding: 0 45px;
-  }
-}
-
-/* 
-Low resolution tablets, mobiles
-*/
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .Dashboard-container {
-      padding: 0 30px;
-  }
-}
-
-/* 
-Most of the smartphones, mobiles
-*/
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .Dashboard-container {
-      padding: 0 15px;
-  }
 }

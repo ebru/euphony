@@ -11,7 +11,6 @@
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   color: #444;
-  padding: 0 170px;
 }
 
 .Days-passed-container {
@@ -19,33 +18,4 @@
   bottom: 40px;
   font-style: italic;
   font-size: 14px;
-}
-/* 
-  Tablets, ipads
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .Homepage-container {
-      padding: 0 45px;
-  }
-}
-
-/* 
-Low resolution tablets, mobiles
-*/
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .Homepage-container {
-      padding: 0 30px;
-  }
-}
-
-/* 
-Most of the smartphones, mobiles
-*/
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .Homepage-container {
-      padding: 0 15px;
-  }
 }

@@ -112,15 +112,17 @@ const Dashboard = props => {
   return (
     <div className='Dashboard'>
       <Header />
-      <div className='Dashboard-container'>
-        <p><em>most played so far</em></p>
-        <h1>{props.user.mostPlayed.name}</h1>
-        <p><em>by {props.user.mostPlayed.artistName}</em></p>
-        {
-          // props.mostPlayed.previewUrl
-          //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />
-          //   : null
-        }
+      <div className='Main-container'>
+        <div className='Dashboard-container'>
+          <p><em>most played so far</em></p>
+          <h1>{props.user.mostPlayed.name}</h1>
+          <p><em>by {props.user.mostPlayed.artistName}</em></p>
+          {
+            // props.mostPlayed.previewUrl
+            //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />
+            //   : null
+          }
+        </div>
       </div>
     </div >
   );

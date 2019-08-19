@@ -22,15 +22,17 @@ const Homepage = () => {
 
   return (
     <div className='Homepage'>
-      <div className='Homepage-container'>
-        <div>Hello!</div>
-        <div>
-          <Button onClick={connectWithSpotifyHandler} type='primary' size='large'>Connect with Spotify</Button>
-        </div>
-        <div className='Days-passed-container'>
-          this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
+      <div className='Main-container'>
+        <div className='Homepage-container'>
+          <div>Hello!</div>
+          <div>
+            <Button onClick={connectWithSpotifyHandler} type='primary' size='large'>Connect with Spotify</Button>
+          </div>
+          <div className='Days-passed-container'>
+            this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
           <br />
-          <a href='https://github.com/ebrukye/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
+            <a href='https://github.com/ebrukye/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
+          </div>
         </div>
       </div>
     </div >
