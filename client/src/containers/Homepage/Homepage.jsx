@@ -30,7 +30,7 @@ const Homepage = () => {
         <div className='Days-passed-container'>
           this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
           <br />
-          <a href='https://github.com/ebrukye/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
+          <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
         </div>
       </div>
     </div >
