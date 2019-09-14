@@ -36,11 +36,19 @@
       }
     }
 
+    .description {
+      margin-top: 120px;
+      font-size: 12px;
+      background-color: #f7f7f7;
+      border-radius: 5px;
+      padding: 15px;
+      width: 60%;
+    }
 
     .Days-passed-container {
       font-style: italic;
       font-size: 14px;
-      margin-top: 100px;
+      margin-top: 60px;
     }
   }
 }
@@ -55,6 +63,9 @@
       .call-to-action {
         margin-top: 60px;
         font-size: 55px;
+      }
+      .description {
+        margin-top: 90px;
       }
     }
   }
@@ -71,6 +82,10 @@
         margin-top: 50px;
         font-size: 45px;
       }
+      .description {
+        margin-top: 80px;
+        width: 80%;
+      }
     }
   }
 }
@@ -85,6 +100,10 @@
       .call-to-action {
         margin-top: 40px;
         font-size: 35px;
+      }
+      .description {
+        margin-top: 70px;
+        width: 80%;
       }
     }
   }
