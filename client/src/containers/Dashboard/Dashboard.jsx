@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import './Dashboard.css';
+import './Dashboard.scss';
 // import Sound from 'react-sound';
 import Header from '../../components/Header/Header';
 import * as actionTypes from '../../store/actions';
@@ -112,15 +112,17 @@ const Dashboard = props => {
   return (
     <div className='Dashboard'>
       <Header />
-      <div className='Dashboard-container'>
-        <p><em>most played so far</em></p>
-        <h1>{props.user.mostPlayed.name}</h1>
-        <p><em>by {props.user.mostPlayed.artistName}</em></p>
-        {
-          // props.mostPlayed.previewUrl
-          //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />
-          //   : null
-        }
+      <div className='Main-container'>
+        <div className='Dashboard-container'>
+          <p><em>most played so far</em></p>
+          <h1>{props.user.mostPlayed.name}</h1>
+          <p><em>by {props.user.mostPlayed.artistName}</em></p>
+          {
+            // props.mostPlayed.previewUrl
+            //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />
+            //   : null
+          }
+        </div>
       </div>
     </div >
   );

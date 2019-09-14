@@ -1,0 +1,14 @@
+.Dashboard {
+  text-align: center;
+}
+
+.Dashboard-container {
+  margin-top: 80px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #444;
+}

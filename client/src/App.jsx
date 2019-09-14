@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Homepage from './containers/Homepage/Homepage';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Cookies from 'js-cookie';
