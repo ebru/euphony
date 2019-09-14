@@ -19,15 +19,20 @@ const UserDropdownMenu = props => {
 }
 
 const Header = props => {
+  const { isAuthed } = props;
+
   return (
     <header className='Main-header'>
       <div className='Main-header-container'>
         <div className='Logo-wrapper'>
-          <Link to='/dashboard'><img src='assets/images/logo.png' width='170px' alt='logo' /></Link>
+          <Link to='/'><img src='assets/images/logo.png' width='170px' alt='logo' /></Link>
         </div>
-        <div className='User-wrapper'>
-          <UserDropdownMenu userProfileImage={props.user.profileImage} />
-        </div>
+        {
+          isAuthed ?
+            <div className='User-wrapper'>
+              <UserDropdownMenu userProfileImage={props.user.profileImage} />
+            </div> : null
+        }
       </div>
     </header >
   );
@@ -35,7 +40,8 @@ const Header = props => {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    isAuthed: state.isAuthed
   };
 }
 
