@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'antd/es/button';
 import './Homepage.scss';
+import CustomButton from '../../components/CustomButton/CustomButton';
 
 const Homepage = () => {
   const [state, setState] = useState({
@@ -24,14 +25,21 @@ const Homepage = () => {
     <div className='Homepage'>
       <div className='Main-container'>
         <div className='Homepage-container'>
-          <div className='Call-to-action'>Hello! </div>
+          <div className='call-to-action'>
+            Find out your <em>all-time favorite</em> song
+          </div>
           <div>
-            <Button onClick={connectWithSpotifyHandler} type='primary' size='large'>Connect with Spotify</Button>
+            <CustomButton
+              className='spofity-login-btn'
+              onClick={connectWithSpotifyHandler}
+            >
+              Connect with Spotify
+            </CustomButton>
           </div>
           <div className='Days-passed-container'>
             this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
           <br />
-            <a href='https://github.com/ebrukye/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
+            <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
           </div>
         </div>
       </div>
