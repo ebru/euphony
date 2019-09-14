@@ -4,7 +4,7 @@ I decided to make a little side project in my free time to try some technologies
 
 Here comes the Euphony.
 
-http://euphony.eu-west-1.elasticbeanstalk.com/
+http://euphony.me
 
 **Technologies used;**
 - React with Redux
