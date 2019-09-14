@@ -25,7 +25,7 @@ const Header = props => {
     <header className='Main-header'>
       <div className='Main-header-container'>
         <div className='Logo-wrapper'>
-          <Link to='/'><img src='assets/images/logo.png' width='170px' alt='logo' /></Link>
+          <img src='assets/images/logo.png' width='170px' alt='logo' />
         </div>
         {
           isAuthed ?
