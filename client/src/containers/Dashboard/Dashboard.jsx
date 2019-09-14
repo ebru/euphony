@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import './Dashboard.css';
+import './Dashboard.scss';
 // import Sound from 'react-sound';
 import Header from '../../components/Header/Header';
 import * as actionTypes from '../../store/actions';

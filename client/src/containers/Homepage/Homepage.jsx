@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'antd/es/button';
-import './Homepage.css';
+import './Homepage.scss';
 
 const Homepage = () => {
   const [state, setState] = useState({
@@ -24,7 +24,7 @@ const Homepage = () => {
     <div className='Homepage'>
       <div className='Main-container'>
         <div className='Homepage-container'>
-          <div>Hello!</div>
+          <div className='Call-to-action'>Hello! </div>
           <div>
             <Button onClick={connectWithSpotifyHandler} type='primary' size='large'>Connect with Spotify</Button>
           </div>
