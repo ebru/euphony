@@ -111,7 +111,6 @@ const Dashboard = props => {
 
   return (
     <div className='Dashboard'>
-      <Header />
       <div className='Main-container'>
         <div className='Dashboard-container'>
           <p><em>most played so far</em></p>

@@ -23,7 +23,6 @@ const Homepage = () => {
 
   return (
     <div className='Homepage'>
-      <Header />
       <div className='Main-container'>
         <div className='Homepage-container'>
           <div className='call-to-action'>
