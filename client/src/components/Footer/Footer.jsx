@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='right-wrapper'>
-                    <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
+                    <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>github</b></a>
                 </div>
             </div>
         </footer>
