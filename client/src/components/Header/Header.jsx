@@ -30,7 +30,7 @@ const Header = props => {
         {
           isAuthed ?
             <div className='User-wrapper'>
-              <UserDropdownMenu userProfileImage={props.user.profileImage} />
+              <UserDropdownMenu userProfileImage={props.currentUser.profileImage} />
             </div> : null
         }
       </div>
@@ -38,11 +38,11 @@ const Header = props => {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user,
-    isAuthed: state.isAuthed
-  };
-}
+const mapStateToProps = ({ user: { isAuthed, currentUser } }) => ({
+  isAuthed,
+  currentUser
+});
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps
+)(Header);

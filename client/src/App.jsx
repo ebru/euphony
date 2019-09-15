@@ -53,10 +53,10 @@ const App = props => {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    isAuthed: state.isAuthed
-  };
-}
+const mapStateToProps = ({ user: { isAuthed } }) => ({
+  isAuthed
+});
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps
+)(App);
