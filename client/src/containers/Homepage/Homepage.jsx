@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Homepage.scss';
-import Header from '../../components/Header/Header';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 const Homepage = () => {
@@ -23,7 +22,6 @@ const Homepage = () => {
 
   return (
     <div className='Homepage'>
-      <Header />
       <div className='Main-container'>
         <div className='Homepage-container'>
           <div className='call-to-action'>

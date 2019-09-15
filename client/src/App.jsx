@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import './App.scss';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 import Homepage from './containers/Homepage/Homepage';
 import Dashboard from './containers/Dashboard/Dashboard';
-import Cookies from 'js-cookie';
+import Header from './components/Header/Header';
+
+import './App.scss';
 
 const PrivateRoute = ({ component: Component, isAuthed, ...rest }) => {
   return (
@@ -35,20 +38,25 @@ const LogoutHandler = () => {
   return window.location = '/';
 };
 
-const App = (props, { history }) => {
+const App = props => {
+  const { isAuthed } = props;
+
   return (
-    <Router history={history}>
-      <LandingRoute exact path='/' isAuthed={props.isAuthed} />
-      <Route path='/logout' component={LogoutHandler} />
-      <PrivateRoute isAuthed={props.isAuthed} path='/dashboard' component={Dashboard} />
-    </Router>
+    <div>
+      <Header />
+      <Switch>
+        <LandingRoute exact path='/' isAuthed={isAuthed} />
+        <Route path='/logout' component={LogoutHandler} />
+        <PrivateRoute isAuthed={isAuthed} path='/dashboard' component={Dashboard} />
+      </Switch>
+    </div>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    isAuthed: state.isAuthed
-  };
-}
+const mapStateToProps = ({ user: { isAuthed } }) => ({
+  isAuthed
+});
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps
+)(App);

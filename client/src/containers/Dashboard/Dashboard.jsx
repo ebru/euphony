@@ -4,36 +4,35 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import './Dashboard.scss';
 // import Sound from 'react-sound';
-import Header from '../../components/Header/Header';
-import * as actionTypes from '../../store/actions';
+import { updateUser } from '../../redux/user/user.actions';
 
 const Dashboard = props => {
   useEffect(() => {
-    const getGraphQLTest = async () => {
-      const query = `query {
-        hello
-      }`;
+    // const getGraphQLTest = async () => {
+    //   const query = `query {
+    //     hello
+    //   }`;
 
-      let testResponse = await axios.post(
-        'http://localhost/api',
-        {
-          query: query,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-        });
-      const testData = testResponse.data;
+    //   let testResponse = await axios.post(
+    //     'http://localhost/api',
+    //     {
+    //       query: query,
+    //     },
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         'Accept': 'application/json',
+    //       },
+    //     });
+    //   const testData = testResponse.data;
 
-      return testData;
-    }
+    //   return testData;
+    // }
 
-    getGraphQLTest()
-      .then(testData => {
-        console.log(testData.data);
-      });
+    // getGraphQLTest()
+    //   .then(testData => {
+    //     console.log(testData.data);
+    //   });
 
     const getUser = async () => {
       const accessToken = Cookies.get('userToken')
@@ -111,12 +110,11 @@ const Dashboard = props => {
 
   return (
     <div className='Dashboard'>
-      <Header />
       <div className='Main-container'>
         <div className='Dashboard-container'>
           <p><em>most played so far</em></p>
-          <h1>{props.user.mostPlayed.name}</h1>
-          <p><em>by {props.user.mostPlayed.artistName}</em></p>
+          <h1>{props.currentUser.mostPlayed.name}</h1>
+          <p><em>by {props.currentUser.mostPlayed.artistName}</em></p>
           {
             // props.mostPlayed.previewUrl
             //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />
@@ -124,20 +122,21 @@ const Dashboard = props => {
           }
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-}
+const mapStateToProps = ({ user: { currentUser } }) => ({
+  currentUser
+});
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUser: (user) => dispatch({ type: actionTypes.UPDATE_USER, payload: user })
+    updateUser: user => dispatch(updateUser(user))
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

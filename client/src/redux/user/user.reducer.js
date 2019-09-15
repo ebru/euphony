@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
-import * as actionTypes from './actions';
+import { userActionTypes } from './user.types';
 
 const initialState = {
     isAuthed: Cookies.get('userToken') ? true : false,
-    user: {
+    currentUser: {
         'sid': '',
         'name': '',
         'country': '',
@@ -21,10 +21,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.UPDATE_USER:
+        case userActionTypes.UPDATE_USER:
             return {
                 ...state,
-                user: {
+                currentUser: {
                     'sid': action.payload.sid,
                     'name': action.payload.name,
                     'country': action.payload.country,
