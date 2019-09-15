@@ -8,6 +8,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 
 import './App.scss';
+import Footer from './components/Footer/Footer';
 
 const PrivateRoute = ({ component: Component, isAuthed, ...rest }) => {
   return (
@@ -49,6 +50,7 @@ const App = props => {
         <Route path='/logout' component={LogoutHandler} />
         <PrivateRoute isAuthed={isAuthed} path='/dashboard' component={Dashboard} />
       </Switch>
+      <Footer />
     </div>
   );
 }

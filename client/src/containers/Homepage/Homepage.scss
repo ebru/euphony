@@ -8,9 +8,10 @@
     align-items: center;
     font-size: calc(10px + 2vmin);
     color: #444;
+    padding-top: 15px;
+    padding-bottom: 15px;
 
     .call-to-action {
-      margin-top: 80px;
       font-size: 55px;
       font-weight: 500;
     }
@@ -43,31 +44,6 @@
       padding: 15px;
       width: 60%;
     }
-
-    .Days-passed-container {
-      font-style: italic;
-      font-size: 14px;
-      margin-top: 60px;
-      margin-bottom: 10px;
-    }
-  }
-}
-
-/* 
-  Tablets, ipads
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .Homepage {
-    .Homepage-container {
-      .call-to-action {
-        margin-top: 60px;
-        font-size: 55px;
-      }
-      .description {
-        margin-top: 90px;
-      }
-    }
   }
 }
 
@@ -79,7 +55,6 @@
   .Homepage {
     .Homepage-container {
       .call-to-action {
-        margin-top: 50px;
         font-size: 45px;
       }
       .description {
@@ -98,7 +73,6 @@
   .Homepage {
     .Homepage-container {
       .call-to-action {
-        margin-top: 40px;
         font-size: 35px;
       }
       .description {

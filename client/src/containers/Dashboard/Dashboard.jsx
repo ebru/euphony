@@ -112,9 +112,11 @@ const Dashboard = props => {
     <div className='Dashboard'>
       <div className='Main-container'>
         <div className='Dashboard-container'>
-          <p><em>most played so far</em></p>
-          <h1>{props.currentUser.mostPlayed.name}</h1>
-          <p><em>by {props.currentUser.mostPlayed.artistName}</em></p>
+          <div className='most-played'>
+            <p><em>most played so far</em></p>
+            <h1>{props.currentUser.mostPlayed.name}</h1>
+            <p><em>by {props.currentUser.mostPlayed.artistName}</em></p>
+          </div>
           {
             // props.mostPlayed.previewUrl
             //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />

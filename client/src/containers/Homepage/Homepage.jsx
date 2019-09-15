@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Homepage.scss';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 const Homepage = () => {
-  const [state, setState] = useState({
-    daysPassed: '',
-  });
-
   const connectWithSpotifyHandler = () => {
     return window.location = '/api/login';
   }
-
-  useEffect(() => {
-    let current = new Date();
-    let started = new Date(2019, 7, 10)
-
-    setState({
-      daysPassed: Math.ceil((current - started + 1) / 86400000),
-    });
-  }, []);
 
   return (
     <div className='Homepage'>
@@ -42,11 +29,6 @@ const Homepage = () => {
               agreeableness of sound; pleasing effect to the ear,
               especially a pleasant sounding or harmonious combination or succession of words.
               </code>
-          </div>
-          <div className='Days-passed-container'>
-            this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
-          <br />
-            <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>repo</b></a>
           </div>
         </div>
       </div>
