@@ -8,10 +8,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 
 import './App.scss';
-<<<<<<< HEAD
 import Footer from './components/Footer/Footer';
-=======
->>>>>>> master
 
 const PrivateRoute = ({ component: Component, isAuthed, ...rest }) => {
   return (
