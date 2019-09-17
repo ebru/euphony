@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-import Homepage from './containers/Homepage/Homepage';
-import Dashboard from './containers/Dashboard/Dashboard';
+import Homepage from './pages/Homepage/Homepage';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
