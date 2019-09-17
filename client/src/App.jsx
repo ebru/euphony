@@ -6,9 +6,11 @@ import Cookies from 'js-cookie';
 import Homepage from './containers/Homepage/Homepage';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
+import { selectIsAuthed } from './redux/user/user.selectors';
 
 import './App.scss';
-import Footer from './components/Footer/Footer';
 
 const PrivateRoute = ({ component: Component, isAuthed, ...rest }) => {
   return (
@@ -55,8 +57,8 @@ const App = props => {
   );
 }
 
-const mapStateToProps = ({ user: { isAuthed } }) => ({
-  isAuthed
+const mapStateToProps = state => ({
+  isAuthed: selectIsAuthed(state)
 });
 
 export default connect(
