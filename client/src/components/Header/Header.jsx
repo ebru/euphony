@@ -1,9 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import './Header.scss';
 import { Menu, Dropdown, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import { selectIsAuthed, selectCurrentUser } from '../../redux/user/user.selectors';
+
+import { selectIsAuthed } from '../../redux/auth/auth.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 const UserDropdownMenu = props => {
   const menu = (

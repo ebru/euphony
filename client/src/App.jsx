@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -8,7 +8,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-import { selectIsAuthed } from './redux/user/user.selectors';
+import { selectIsAuthed } from './redux/auth/auth.selectors';
 
 import './App.scss';
 

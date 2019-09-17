@@ -1,8 +1,6 @@
-import Cookies from 'js-cookie';
 import { userActionTypes } from './user.types';
 
 const initialState = {
-    isAuthed: Cookies.get('userToken') ? true : false,
     currentUser: {
         'sid': '',
         'name': '',

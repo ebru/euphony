@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import './Dashboard.scss';
@@ -8,6 +8,8 @@ import { updateUser } from '../../redux/user/user.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 const Dashboard = props => {
+  const { updateUser } = props;
+
   useEffect(() => {
     const getUser = async () => {
       const accessToken = Cookies.get('userToken')
@@ -36,51 +38,11 @@ const Dashboard = props => {
         }
       }
 
-      props.updateUser(user);
-
-      return user;
+      updateUser(user);
     }
 
-    const cachedUser = JSON.parse(localStorage.getItem('cachedUser'));
-    let isCacheExpired = false;
-
-    if (cachedUser) {
-      const timestamp = cachedUser.timestamp;
-      const current = new Date().getTime().toString();
-
-      // Expire the cache after one day
-      if (Math.ceil((current - timestamp + 1) / 86400000) > 1)
-        isCacheExpired = true;
-    }
-
-    if (cachedUser && !isCacheExpired) {
-      // Get most played data from cache on local storage
-      props.updateUser({
-        'sid': cachedUser.sid,
-        'name': cachedUser.name,
-        'country': cachedUser.country,
-        'profileImage': cachedUser.profileImage,
-        'profileUrl': cachedUser.profileUrl,
-        'mostPlayed': {
-          'sid': cachedUser.mostPlayed.sid,
-          'name': cachedUser.mostPlayed.name,
-          'artistName': cachedUser.mostPlayed.artistName,
-          'previewUrl': cachedUser.mostPlayed.previewUrl,
-          'coverImage': cachedUser.mostPlayed.coverImage
-        }
-      });
-    } else {
-      // Fetch from Spotify and cache the response on local storage
-      getUser()
-        .then(user => {
-          const userToCache = {
-            ...user,
-            'timestamp': new Date().getTime()
-          };
-
-          localStorage.setItem('cachedUser', JSON.stringify(userToCache));
-        });
-    }
+    // Fetch and set user from Spotify
+    getUser()
   }, []);
 
   return (
