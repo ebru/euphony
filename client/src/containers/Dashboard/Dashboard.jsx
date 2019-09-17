@@ -5,35 +5,10 @@ import Cookies from 'js-cookie';
 import './Dashboard.scss';
 // import Sound from 'react-sound';
 import { updateUser } from '../../redux/user/user.actions';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 const Dashboard = props => {
   useEffect(() => {
-    // const getGraphQLTest = async () => {
-    //   const query = `query {
-    //     hello
-    //   }`;
-
-    //   let testResponse = await axios.post(
-    //     'http://localhost/api',
-    //     {
-    //       query: query,
-    //     },
-    //     {
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json',
-    //       },
-    //     });
-    //   const testData = testResponse.data;
-
-    //   return testData;
-    // }
-
-    // getGraphQLTest()
-    //   .then(testData => {
-    //     console.log(testData.data);
-    //   });
-
     const getUser = async () => {
       const accessToken = Cookies.get('userToken')
       const config = {
@@ -128,8 +103,8 @@ const Dashboard = props => {
   );
 }
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-  currentUser
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state)
 });
 
 const mapDispatchToProps = dispatch => {

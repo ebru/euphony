@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './Header.scss';
 import { Menu, Dropdown, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
+import { selectIsAuthed, selectCurrentUser } from '../../redux/user/user.selectors';
 
 const UserDropdownMenu = props => {
   const menu = (
@@ -38,9 +39,9 @@ const Header = props => {
   );
 }
 
-const mapStateToProps = ({ user: { isAuthed, currentUser } }) => ({
-  isAuthed,
-  currentUser
+const mapStateToProps = state => ({
+  isAuthed: selectIsAuthed(state),
+  currentUser: selectCurrentUser(state)
 });
 
 export default connect(
