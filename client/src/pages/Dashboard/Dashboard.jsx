@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-// import Sound from 'react-sound';
+
+import MostPlayed from '../../components/MostPlayed/MostPlayed';
 
 import { updateUser } from '../../redux/user/user.actions';
-
-import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './Dashboard.scss';
 
 const Dashboard = props => {
-  const { updateUser } = props;
+  const { updateUser, currentUser: { mostPlayed } } = props;
 
   useEffect(() => {
     const getUser = async () => {
@@ -53,21 +53,12 @@ const Dashboard = props => {
     <div className='Dashboard'>
       <div className='Main-container'>
         <div className='Dashboard-container'>
-          <div className='most-played'>
-            <p><em>most played so far</em></p>
-            <h1>{props.currentUser.mostPlayed.name}</h1>
-            <p><em>by {props.currentUser.mostPlayed.artistName}</em></p>
-          </div>
-          {
-            // props.mostPlayed.previewUrl
-            //   ? <Sound url={props.mostPlayed.previewUrl} playStatus={Sound.status.PLAYING} />
-            //   : null
-          }
+          <MostPlayed mostPlayed={mostPlayed} />
         </div>
       </div>
     </div>
   );
-}
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser

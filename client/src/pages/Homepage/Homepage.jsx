@@ -32,8 +32,8 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
-}
+};
 
 export default Homepage;

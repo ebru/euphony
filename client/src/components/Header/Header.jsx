@@ -22,7 +22,7 @@ const Header = ({ isAuthed, currentUser }) => (
           </div> : null
       }
     </div>
-  </header >
+  </header>
 );
 
 const mapStateToProps = createStructuredSelector({

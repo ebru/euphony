@@ -10,6 +10,6 @@ const CustomButton = ({ children, ...otherProps }) => {
             <span><b>{children}</b></span>
         </Button>
     );
-}
+};
 
 export default CustomButton;
