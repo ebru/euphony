@@ -1,6 +1,8 @@
 import React from 'react';
-import './Homepage.scss';
+
 import CustomButton from '../../components/CustomButton/CustomButton';
+
+import './Homepage.scss';
 
 const Homepage = () => {
   const connectWithSpotifyHandler = () => {

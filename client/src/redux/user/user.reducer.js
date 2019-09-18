@@ -20,18 +20,18 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case userActionTypes.FETCH_COLLECTION_START:
+        case userActionTypes.FETCH_USER_START:
             return {
                 ...state,
                 isFetching: true
             };
-        case userActionTypes.FETCH_COLLECTION_SUCCESS:
+        case userActionTypes.FETCH_USER_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 currentUser: action.payload
             };
-        case userActionTypes.FETCH_COLLECTION_FAILURE:
+        case userActionTypes.FETCH_USER_FAILURE:
             return {
                 ...state,
                 isFetching: false,

@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import MostPlayed from '../../components/MostPlayed/MostPlayed';
-
 import { fetchUserStartAsync } from '../../redux/user/user.actions';
 import { selectCurrentUser, selectIsUserFetching } from '../../redux/user/user.selectors';
+
+import MostPlayed from '../../components/MostPlayed/MostPlayed';
 
 import './Dashboard.scss';
 

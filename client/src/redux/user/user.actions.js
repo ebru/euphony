@@ -4,16 +4,16 @@ import axios from 'axios';
 import { userActionTypes } from './user.types';
 
 export const fetchUserStart = () => ({
-    type: userActionTypes.FETCH_COLLECTION_START
+    type: userActionTypes.FETCH_USER_START
 });
 
 export const fetchUserSuccess = user => ({
-    type: userActionTypes.FETCH_COLLECTION_SUCCESS,
+    type: userActionTypes.FETCH_USER_SUCCESS,
     payload: user
 });
 
 export const fetchUserFailure = errorMessage => ({
-    type: userActionTypes.FETCH_COLLECTION_FAILURE,
+    type: userActionTypes.FETCH_USER_FAILURE,
     payload: errorMessage
 });
 
