@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'antd';
-import './CustomButton.scss';
 
 const CustomButton = ({ children, ...otherProps }) => {
     return (
