@@ -2,10 +2,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import './Dashboard.scss';
 // import Sound from 'react-sound';
+
 import { updateUser } from '../../redux/user/user.actions';
+
+import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+import './Dashboard.scss';
 
 const Dashboard = props => {
   const { updateUser } = props;
@@ -65,8 +69,8 @@ const Dashboard = props => {
   );
 }
 
-const mapStateToProps = state => ({
-  currentUser: selectCurrentUser(state)
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => {

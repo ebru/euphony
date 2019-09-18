@@ -22,20 +22,7 @@ const reducer = (state = initialState, action) => {
         case userActionTypes.UPDATE_USER:
             return {
                 ...state,
-                currentUser: {
-                    'sid': action.payload.sid,
-                    'name': action.payload.name,
-                    'country': action.payload.country,
-                    'profileImage': action.payload.profileImage,
-                    'profileUrl': action.payload.profileUrl,
-                    mostPlayed: {
-                        'sid': action.payload.mostPlayed.sid,
-                        'name': action.payload.mostPlayed.name,
-                        'artistName': action.payload.mostPlayed.artistName,
-                        'previewUrl': action.payload.mostPlayed.previewUrl,
-                        'coverImage': action.payload.mostPlayed.coverImage
-                    }
-                }
+                currentUser: action.payload
             };
         default:
             return state;

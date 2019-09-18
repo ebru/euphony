@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
+import { createStructuredSelector } from 'reselect';
 import { selectIsAuthed } from './redux/auth/auth.selectors';
 
 import './App.scss';
@@ -57,8 +58,8 @@ const App = props => {
   );
 }
 
-const mapStateToProps = state => ({
-  isAuthed: selectIsAuthed(state)
+const mapStateToProps = createStructuredSelector({
+  isAuthed: selectIsAuthed
 });
 
 export default connect(

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import UserDropdown from '../UserDropdown/UserDropdown';
 
+import { createStructuredSelector } from 'reselect';
 import { selectIsAuthed } from '../../redux/auth/auth.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
@@ -24,9 +25,9 @@ const Header = ({ isAuthed, currentUser }) => (
   </header >
 );
 
-const mapStateToProps = state => ({
-  isAuthed: selectIsAuthed(state),
-  currentUser: selectCurrentUser(state)
+const mapStateToProps = createStructuredSelector({
+  isAuthed: selectIsAuthed,
+  currentUser: selectCurrentUser
 });
 
 export default connect(
