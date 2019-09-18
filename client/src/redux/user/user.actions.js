@@ -26,11 +26,11 @@ export const fetchUserStartAsync = () => {
 
         dispatch(fetchUserStart());
 
-        try {
-            let userResponse = axios.get('https://api.spotify.com/v1/me', config);
+        const fetchUser = async () => {
+            let userResponse = await axios.get('https://api.spotify.com/v1/me', config);
             const userData = userResponse.data;
 
-            let mostPlayedResponse = axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1', config);
+            let mostPlayedResponse = await axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1', config);
             const mostPlayedData = mostPlayedResponse.data.items[0];
 
             const user = {
@@ -49,8 +49,11 @@ export const fetchUserStartAsync = () => {
             };
 
             dispatch(fetchUserSuccess(user));
-        }
-        catch (error) {
+        };
+
+        try {
+            fetchUser();
+        } catch (error) {
             dispatch(fetchUserFailure(error.message));
         }
     };

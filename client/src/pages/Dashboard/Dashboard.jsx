@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -10,7 +10,11 @@ import { selectCurrentUser, selectIsUserFetching } from '../../redux/user/user.s
 import './Dashboard.scss';
 
 const Dashboard = props => {
-  const { isUserFetching, currentUser: { mostPlayed } } = props;
+  const { fetchUserStartAsync, currentUser: { mostPlayed } } = props;
+
+  useEffect(() => {
+    fetchUserStartAsync();
+  }, []);
 
   return (
     <div className='Dashboard'>

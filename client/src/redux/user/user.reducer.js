@@ -1,9 +1,22 @@
 import { userActionTypes } from './user.types';
 
 const initialState = {
-    currentUser: null,
+    currentUser: {
+        'sid': '',
+        'name': '',
+        'country': '',
+        'profileImage': '',
+        'profileUrl': '',
+        mostPlayed: {
+            'sid': '',
+            'name': '',
+            'artistName': '',
+            'previewUrl': '',
+            'coverImage': ''
+        }
+    },
     isFetching: false
-}
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -27,6 +40,6 @@ const reducer = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 
 export default reducer;
