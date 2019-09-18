@@ -41,7 +41,7 @@ const Dashboard = props => {
       updateUser(user);
     }
 
-    // Fetch and set user from Spotify
+    // Fetch user info from spotify
     getUser()
   }, []);
 
