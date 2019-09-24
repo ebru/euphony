@@ -18,7 +18,7 @@ router.get('/test', (err, res) => {
 });
 
 // Login endpoint
-router.get('/login', function (req, res) {
+router.get('/login', (req, res) => {
   // Access scope to authorize
   const scopes = ['user-read-private',
     'user-read-email',
@@ -35,7 +35,7 @@ router.get('/login', function (req, res) {
 });
 
 // Callback endpoint
-router.get('/callback', function (req, res) {
+router.get('/callback', (req, res) => {
   let code = req.query.code || null;
 
   let authOptions = {
@@ -53,7 +53,7 @@ router.get('/callback', function (req, res) {
     json: true
   };
 
-  request.post(authOptions, function (error, response, body) {
+  request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       const accessToken = body.access_token;
 
