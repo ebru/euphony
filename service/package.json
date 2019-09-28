@@ -8,7 +8,9 @@
     "start-dev": "nodemon -r esm server.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
