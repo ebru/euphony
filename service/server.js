@@ -5,7 +5,7 @@ import graphqlHTTP from 'express-graphql';
 import cors from 'cors';
 
 import routes from './src/routes/routes';
-import schema from './src/graphql/schema';
+import schema from './src/schema/schema';
 
 const app = express();
 
@@ -21,8 +21,33 @@ app.use(cors());
 // Use routes
 app.use('/api', routes);
 
+const usersData = [
+    {
+        sid: 'test123',
+        name: 'Lorem Ipsum',
+        country: 'li',
+        profileImage: 'https://test.com/img/1',
+        profileUrl: 'https://test.com/user/1'
+    },
+    {
+        sid: 'test456',
+        name: 'Dolor Sit',
+        country: 'ds',
+        profileImage: 'https://test.com/img/2',
+        profileUrl: 'https://test.com/user/2'
+    }
+];
+
+const getUser = args => {
+    const sid = args.sid;
+
+    return usersData.filter(user => {
+        return user.sid == sid;
+    })[0];
+};
+
 const root = {
-    hello: () => 'Hello!!'
+    user: getUser,
 };
 
 app.use('/api/graphql', graphqlHTTP({
