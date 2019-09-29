@@ -39,11 +39,7 @@ const usersData = [
 ];
 
 const getUser = args => {
-    const sid = args.sid;
-
-    return usersData.filter(user => {
-        return user.sid == sid;
-    })[0];
+    return usersData.find(user => user.sid == args.sid);
 };
 
 const root = {
