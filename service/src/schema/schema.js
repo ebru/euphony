@@ -2,14 +2,22 @@ import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
     type Query {
-        user(sid: String!): User
+        user(id: String!): User,
+        song(id: String!): Song,
     },
     type User {
-        sid: String,
+        id: String,
         name: String,
         country: String,
         profileImage: String,
         profileUrl: String
+    },
+    type Song {
+        id: String,
+        name: String,
+        artistName: String,
+        previewUrl: String,
+        coverImage: String
     }
 `);
 

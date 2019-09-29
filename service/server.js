@@ -23,27 +23,51 @@ app.use('/api', routes);
 
 const usersData = [
     {
-        sid: 'test123',
+        id: 'test123',
         name: 'Lorem Ipsum',
         country: 'li',
         profileImage: 'https://test.com/img/1',
-        profileUrl: 'https://test.com/user/1'
+        profileUrl: 'https://test.com/user/1',
+        mostPlayedId: 'test123'
     },
     {
-        sid: 'test456',
+        id: 'test456',
         name: 'Dolor Sit',
         country: 'ds',
         profileImage: 'https://test.com/img/2',
-        profileUrl: 'https://test.com/user/2'
+        profileUrl: 'https://test.com/user/2',
+        mostPlayedId: 'test456'
     }
 ];
 
-const getUser = args => {
-    return usersData.find(user => user.sid == args.sid);
+const songsData = [
+    {
+        id: 'test123',
+        name: 'Test Test',
+        artistName: 'Test One',
+        previewUrl: null,
+        coverImage: 'https://test.com/image/cover1'
+    },
+    {
+        id: 'test456',
+        name: 'Dolor Dolor',
+        artistName: 'Test Two',
+        previewUrl: 'https://test.com/song/2',
+        coverImage: 'https://test.com/image/cover2'
+    }
+];
+
+const getUser = ({ id }) => {
+    return usersData.find(user => user.id == id);
+};
+
+const getSong = ({ id }) => {
+    return songsData.find(song => song.id == id);
 };
 
 const root = {
     user: getUser,
+    song: getSong
 };
 
 app.use('/api/graphql', graphqlHTTP({
