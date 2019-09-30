@@ -5,6 +5,7 @@ const schema = buildSchema(`
         user(id: String!): User,
         users: [User],
         song(id: String!): Song
+        songs: [Song]
     },
     type User {
         id: String,

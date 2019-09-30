@@ -69,10 +69,15 @@ const getSong = ({ id }) => {
     return songsData.find(song => song.id == id);
 };
 
+const getSongs = () => {
+    return songsData;
+};
+
 const root = {
     user: getUser,
     users: getUsers,
-    song: getSong
+    song: getSong,
+    songs: getSongs
 };
 
 app.use('/api/graphql', graphqlHTTP({
