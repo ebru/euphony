@@ -6,7 +6,8 @@ const UserSchema = new Schema({
     name: String,
     country: String,
     profileImage: String,
-    profileUrl: String
+    profileUrl: String,
+    mostPlayedSid: String
 });
 
 export default mongoose.model('User', UserSchema);

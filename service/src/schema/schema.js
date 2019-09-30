@@ -18,10 +18,11 @@ const UserType = new GraphQLObjectType({
         country: { type: GraphQLString },
         profileImage: { type: GraphQLString },
         profileUrl: { type: GraphQLString },
+        mostPlayedSid: { type: GraphQLString },
         mostPlayed: {
             type: SongType,
             resolve(parent, args) {
-                return songsData.find(song => song.sid == parent.mostPlayedId);
+                return Song.findOne({ sid: parent.mostPlayedSid });
             }
         }
     })
@@ -39,47 +40,11 @@ const SongType = new GraphQLObjectType({
         users: {
             type: new GraphQLList(UserType),
             resolve(parent, args) {
-                return usersData.filter(user => user.mostPlayedSid == parent.sid);
+                return User.find({ mostPlayedSid: parent.sid });
             }
         }
     })
 });
-
-const usersData = [
-    {
-        sid: 'user1',
-        name: 'Lorem Ipsum',
-        country: 'li',
-        profileImage: 'https://test.com/img/1',
-        profileUrl: 'https://test.com/user/1',
-        mostPlayedSid: 'song1'
-    },
-    {
-        sid: 'user2',
-        name: 'Dolor Sit',
-        country: 'ds',
-        profileImage: 'https://test.com/img/2',
-        profileUrl: 'https://test.com/user/2',
-        mostPlayedSid: 'song1'
-    }
-];
-
-const songsData = [
-    {
-        sid: 'song1',
-        name: 'Test Test',
-        artistName: 'Test One',
-        previewUrl: null,
-        coverImage: 'https://test.com/image/cover1'
-    },
-    {
-        sid: 'song2',
-        name: 'Dolor Dolor',
-        artistName: 'Test Two',
-        previewUrl: 'https://test.com/song/2',
-        coverImage: 'https://test.com/image/cover2'
-    }
-];
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
@@ -88,33 +53,84 @@ const RootQuery = new GraphQLObjectType({
             type: UserType,
             args: { sid: { type: GraphQLString } },
             resolve(parent, args) {
-                return usersData.find(user => user.sid == args.sid);
+                return User.findOne({ sid: args.sid });
             }
         },
         song: {
             type: SongType,
             args: { sid: { type: GraphQLString } },
             resolve(parent, args) {
-                return songsData.find(song => song.sid == args.sid);
+                return Song.findOne({ sid: args.sid });
             }
         },
         users: {
             type: new GraphQLList(UserType),
             resolve(parent, args) {
-                return usersData;
+                return User.find({});
             }
         },
         songs: {
             type: new GraphQLList(SongType),
             resolve(parent, args) {
-                return songsData;
+                return Song.find({});
+            }
+        }
+    }
+});
+
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addUser: {
+            type: UserType,
+            args: {
+                sid: { type: GraphQLString },
+                name: { type: GraphQLString },
+                country: { type: GraphQLString },
+                profileImage: { type: GraphQLString },
+                profileUrl: { type: GraphQLString },
+                mostPlayedSid: { type: GraphQLString }
+            },
+            resolve(parent, args) {
+                let user = new User({
+                    sid: args.sid,
+                    name: args.name,
+                    country: args.country,
+                    profileImage: args.profileImage,
+                    profileUrl: args.profileUrl,
+                    mostPlayedSid: args.mostPlayedSid
+                });
+
+                return user.save();
+            }
+        },
+        addSong: {
+            type: SongType,
+            args: {
+                sid: { type: GraphQLString },
+                name: { type: GraphQLString },
+                artistName: { type: GraphQLString },
+                previewUrl: { type: GraphQLString },
+                coverImage: { type: GraphQLString }
+            },
+            resolve(parent, args) {
+                let song = new Song({
+                    sid: args.sid,
+                    name: args.name,
+                    artistName: args.artistName,
+                    previewUrl: args.previewUrl,
+                    coverImage: args.coverImage
+                });
+
+                return song.save();
             }
         }
     }
 });
 
 const schema = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 });
 
 export default schema;
