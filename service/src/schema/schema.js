@@ -18,7 +18,6 @@ const UserType = new GraphQLObjectType({
         country: { type: GraphQLString },
         profileImage: { type: GraphQLString },
         profileUrl: { type: GraphQLString },
-        mostPlayedSid: { type: GraphQLString },
         mostPlayed: {
             type: SongType,
             resolve(parent, args) {

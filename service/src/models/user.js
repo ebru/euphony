@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    sid: String,
+    sid: {
+        type: String,
+        unique: true
+    },
     name: String,
     country: String,
     profileImage: String,
