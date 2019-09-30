@@ -3,7 +3,8 @@ import {
     GraphQLString,
     GraphQLSchema,
     GraphQLID,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } from 'graphql';
 
 import User from '../models/user';
@@ -83,7 +84,7 @@ const Mutation = new GraphQLObjectType({
         addUser: {
             type: UserType,
             args: {
-                sid: { type: GraphQLString },
+                sid: { type: new GraphQLNonNull(GraphQLString) },
                 name: { type: GraphQLString },
                 country: { type: GraphQLString },
                 profileImage: { type: GraphQLString },
@@ -106,7 +107,7 @@ const Mutation = new GraphQLObjectType({
         addSong: {
             type: SongType,
             args: {
-                sid: { type: GraphQLString },
+                sid: { type: new GraphQLNonNull(GraphQLString) },
                 name: { type: GraphQLString },
                 artistName: { type: GraphQLString },
                 previewUrl: { type: GraphQLString },
