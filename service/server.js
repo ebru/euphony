@@ -10,8 +10,11 @@ import schema from './src/schema/schema';
 
 const app = express();
 
+// Db connection config
+const DB_CONNECT_URL = process.env.DB_CONNECT_URL;
+
 // Connect to db
-mongoose.connect('mongodb://db:27017/euphony', { useNewUrlParser: true });
+mongoose.connect(DB_CONNECT_URL, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
     console.log('Connected to database.');
 });
