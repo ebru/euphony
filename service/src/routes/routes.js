@@ -1,6 +1,9 @@
 import express from 'express';
 import request from 'request';
 import querystring from 'querystring';
+import axios from 'axios';
+import User from '../models/user';
+import Song from '../models/song';
 
 const router = express.Router();
 
@@ -56,6 +59,45 @@ router.get('/callback', (req, res) => {
   request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       const accessToken = body.access_token;
+
+      const addUser = async () => {
+        const config = {
+          headers: { 'Authorization': 'Bearer ' + accessToken }
+        };
+
+        try {
+          let userResponse = await axios.get('https://api.spotify.com/v1/me', config);
+          const userData = userResponse.data;
+
+          let mostPlayedResponse = await axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1', config);
+          const mostPlayedData = mostPlayedResponse.data.items[0];
+
+          let user = new User({
+            sid: userData.id,
+            name: userData.display_name,
+            country: userData.country,
+            profileImage: userData.images[0].url,
+            profileUrl: userData.uri,
+            mostPlayedSid: mostPlayedData.id
+          });
+
+          user.save();
+
+          let song = new Song({
+            sid: mostPlayedData.id,
+            name: mostPlayedData.name,
+            artistName: mostPlayedData.artists[0].name,
+            previewUrl: mostPlayedData.preview_url,
+            coverImage: mostPlayedData.album.images[0].url
+          });
+
+          song.save();
+        } catch (error) {
+          console.error(error)
+        }
+      };
+
+      addUser();
 
       res.cookie('userToken', accessToken, { maxAge: 3600000 });
       res.redirect(DASHBOARD_URI);
