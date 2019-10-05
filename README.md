@@ -12,9 +12,7 @@ http://euphony.me
 - Spotify OAuth for authentication
 - Docker for containerization
 - AWS Elastic Beanstalk
-
-**Next;**
-- MongoDB for database
+- MongoDB for database with Mongoose
 - GraphQL for API connection
 
 ![Scheme](client/public/assets/images/demo.gif)
