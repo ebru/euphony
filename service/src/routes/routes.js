@@ -86,9 +86,8 @@ router.get('/callback', (req, res) => {
             { $set: user },
             { new: true, upsert: true },
             (error, result) => {
-              if (error) {
+              if (error)
                 console.log('Error occured while saving the user: ' + userData.id);
-              }
             }
           );
 
@@ -105,9 +104,8 @@ router.get('/callback', (req, res) => {
             { $set: song },
             { upsert: true, new: true },
             (error, result) => {
-              if (error) {
+              if (error)
                 console.log('Error occured while saving the song: ' + mostPlayedData.id);
-              }
             }
           );
         } catch (error) {
