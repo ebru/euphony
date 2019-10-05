@@ -22,8 +22,8 @@ router.get('/login', (req, res) => {
   // Access scope to authorize
   const scopes = ['user-read-private',
     'user-read-email',
-    'user-top-read',
-    'user-read-currently-playing'];
+    'user-top-read'
+  ];
 
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
