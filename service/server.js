@@ -14,7 +14,11 @@ const app = express();
 const DB_CONNECT_URL = process.env.DB_CONNECT_URL;
 
 // Connect to db
-mongoose.connect(DB_CONNECT_URL, { useNewUrlParser: true });
+mongoose.connect(
+    DB_CONNECT_URL,
+    { useNewUrlParser: true, useFindAndModify: false }
+);
+
 mongoose.connection.once('open', () => {
     console.log('Connected to database.');
 });

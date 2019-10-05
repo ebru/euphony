@@ -66,32 +66,50 @@ router.get('/callback', (req, res) => {
         };
 
         try {
-          let userResponse = await axios.get('https://api.spotify.com/v1/me', config);
+          const userResponse = await axios.get('https://api.spotify.com/v1/me', config);
           const userData = userResponse.data;
 
-          let mostPlayedResponse = await axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1', config);
-          const mostPlayedData = mostPlayedResponse.data.items[0];
+          const mostPlayedResponse = await axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5', config);
+          const mostPlayedData = mostPlayedResponse.data.items[4];
 
-          const user = new User({
+          const user = {
             sid: userData.id ? userData.id : null,
             name: userData.display_name ? userData.display_name : null,
             country: userData.country ? userData.country : null,
             profileImage: userData.images[0] ? userData.images[0].url : null,
             profileUrl: userData.uri ? userData.uri : null,
             mostPlayedSid: mostPlayedData.id ? mostPlayedData.id : null
-          });
+          };
 
-          user.save();
+          User.findOneAndUpdate(
+            { sid: userData.id },
+            { $set: user },
+            { new: true, upsert: true },
+            (error, result) => {
+              if (error) {
+                console.log('Error occured while saving the user: ' + userData.id);
+              }
+            }
+          );
 
-          const song = new Song({
+          const song = {
             sid: mostPlayedData.id ? mostPlayedData.id : null,
             name: mostPlayedData.name ? mostPlayedData.name : null,
             artistName: mostPlayedData.artists[0] ? mostPlayedData.artists[0].name : null,
             previewUrl: mostPlayedData.preview_url ? mostPlayedData.preview_url : null,
             coverImage: mostPlayedData.album.images[0] ? mostPlayedData.album.images[0].url : null
-          });
+          };
 
-          song.save();
+          Song.findOneAndUpdate(
+            { sid: mostPlayedData.id },
+            { $set: song },
+            { upsert: true, new: true },
+            (error, result) => {
+              if (error) {
+                console.log('Error occured while saving the song: ' + mostPlayedData.id);
+              }
+            }
+          );
         } catch (error) {
           console.error(error)
         }
