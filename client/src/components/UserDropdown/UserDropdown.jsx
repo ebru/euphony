@@ -11,7 +11,13 @@ const UserDropdown = ({ userProfileImage }) => {
 
     return (
         <Dropdown overlay={menu} trigger={['click']} placement='bottomRight'>
-            <Link to='#'><Avatar src={userProfileImage} size='large' /></Link>
+            <Link to='#'>
+                <Avatar
+                    src={userProfileImage}
+                    icon='user'
+                    size='large'
+                />
+            </Link>
         </Dropdown>
     );
 };
