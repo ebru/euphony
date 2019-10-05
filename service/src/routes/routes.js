@@ -69,8 +69,8 @@ router.get('/callback', (req, res) => {
           const userResponse = await axios.get('https://api.spotify.com/v1/me', config);
           const userData = userResponse.data;
 
-          const mostPlayedResponse = await axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5', config);
-          const mostPlayedData = mostPlayedResponse.data.items[4];
+          const mostPlayedResponse = await axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1', config);
+          const mostPlayedData = mostPlayedResponse.data.items[0];
 
           const user = {
             sid: userData.id ? userData.id : null,
