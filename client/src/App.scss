@@ -5,7 +5,7 @@
 }
 
 .Main-container {
-  padding: 50px 170px;
+  padding: 40px 170px;
 
   a {
     color: #5466ba;
@@ -32,7 +32,7 @@
 
 @media (min-width: 481px) and (max-width: 767px) {
   .Main-container {
-    padding: 30px 30px;
+    padding: 35px 30px;
   }
 }
 
@@ -42,6 +42,6 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .Main-container {
-    padding: 20px 15px;
+    padding: 30px 15px;
   }
 }
