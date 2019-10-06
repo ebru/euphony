@@ -3,15 +3,15 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid #f7f7f7;
+  // border-top: 1px solid #f7f7f7;
   background-color: #fff;
   overflow: hidden;
 
   .Main-footer-container {
     display: flex;
-    height: 70px;
-    max-height: 80px;
-    padding: 20px 170px;
+    height: 60px;
+    max-height: 70px;
+    padding: 30px 170px;
     align-items: center;
 
     a {

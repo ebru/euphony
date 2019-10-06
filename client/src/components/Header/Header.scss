@@ -3,8 +3,8 @@
     z-index: 10;
     max-width: 100%;
     background: #fff;
-    -webkit-box-shadow: 0 2px 8px #f0f1f2;
-    box-shadow: 0 2px 8px #f0f1f2;
+    // -webkit-box-shadow: 0 2px 8px #f0f1f2;
+    // box-shadow: 0 2px 8px #f0f1f2;
 }
 
 .Main-header-container {
@@ -17,6 +17,7 @@
 
 .logo-wrapper {
     flex: 1;
+    margin-top: -4px;
     font-size: 30px;
     font-weight: bold;
     line-height: 0;
