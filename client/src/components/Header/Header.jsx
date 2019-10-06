@@ -12,8 +12,8 @@ import './Header.scss';
 const Header = ({ isAuthed, currentUser }) => (
   <header className='Main-header'>
     <div className='Main-header-container'>
-      <div className='Logo-wrapper'>
-        <img src='assets/images/logo.png' width='170px' alt='logo' />
+      <div className='logo-wrapper'>
+        euphony.
       </div>
       {
         isAuthed ?

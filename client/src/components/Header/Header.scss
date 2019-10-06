@@ -15,9 +15,12 @@
     padding: 0 170px;
 }
 
-.Logo-wrapper {
+.logo-wrapper {
     flex: 1;
-    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 0;
+    color: #5466ba;
 }
 
 .User-wrapper {
