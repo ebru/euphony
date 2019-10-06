@@ -14,7 +14,7 @@ const Dashboard = props => {
 
   useEffect(() => {
     fetchUserStartAsync();
-  }, []);
+  }, [fetchUserStartAsync]);
 
   return (
     <div className='Dashboard'>
