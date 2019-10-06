@@ -32,7 +32,7 @@ const Homepage = () => {
             >
               <div className='button-items'>
                 <SpotifyIcon className='spotify-icon' />
-                Connect with Spotify
+                Signup with Spotify
               </div>
             </CustomButton>
           </div>
