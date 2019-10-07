@@ -8,6 +8,6 @@ RUN yarn install
 
 COPY service/ .
 
-EXPOSE 8888
+EXPOSE 5000
 
 CMD ["yarn", "start-dev"]
