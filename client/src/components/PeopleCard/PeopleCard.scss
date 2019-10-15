@@ -1,0 +1,13 @@
+.people-card-container {
+    border: 2px solid #f4f4f4;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 30px 10px;
+    width: 100%;
+    margin-right: 10px;
+    
+    .people-list {
+        list-style: none;
+        padding-left: 10px;;
+    }
+}

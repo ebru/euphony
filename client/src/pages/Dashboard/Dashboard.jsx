@@ -6,6 +6,8 @@ import { fetchUserStartAsync } from '../../redux/user/user.actions';
 import { selectCurrentUser, selectIsUserFetching } from '../../redux/user/user.selectors';
 
 import MostPlayed from '../../components/MostPlayed/MostPlayed';
+import PeopleCard from '../../components/PeopleCard/PeopleCard';
+import MapCard from '../../components/MapCard/MapCard';
 
 import './Dashboard.scss';
 
@@ -16,11 +18,24 @@ const Dashboard = props => {
     fetchUserStartAsync();
   }, [fetchUserStartAsync]);
 
+  const people = [
+    {
+      "name": "sennurkaya03",
+      "profileUrl": "spotify:user:sennurkaya03"
+    },
+    {
+      "name": "Ebru Kaya",
+      "profileUrl": "spotify:user:st943c9lgd92wk98aw3bfxcvb"
+    }
+  ];
+
   return (
-    <div className='Dashboard'>
-      <div className='Main-container'>
-        <div className='Dashboard-container'>
-          <MostPlayed mostPlayed={mostPlayed} />
+    <div className='Main-container'>
+      <div className='Dashboard-container'>
+        <MostPlayed mostPlayed={mostPlayed} />
+        <div class='statistics-container'>
+          <PeopleCard people={people} />
+          <MapCard />
         </div>
       </div>
     </div>
