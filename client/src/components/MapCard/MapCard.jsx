@@ -5,7 +5,7 @@ import Spinner from './../Spinner/Spinner';
 import './MapCard.scss';
 
 const MapCard = () => (
-  <div class='map-card-container'>
+  <div className='map-card-container'>
     <Spinner />
   </div>
 );

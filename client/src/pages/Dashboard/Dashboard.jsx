@@ -20,10 +20,12 @@ const Dashboard = props => {
 
   const people = [
     {
-      "name": "sennurkaya03",
-      "profileUrl": "spotify:user:sennurkaya03"
+      "id": "1",
+      "name": "loremipsum",
+      "profileUrl": "spotify:user:loremipsum"
     },
     {
+      "id": "2",
       "name": "Ebru Kaya",
       "profileUrl": "spotify:user:st943c9lgd92wk98aw3bfxcvb"
     }
@@ -33,7 +35,7 @@ const Dashboard = props => {
     <div className='Main-container'>
       <div className='Dashboard-container'>
         <MostPlayed mostPlayed={mostPlayed} />
-        <div class='statistics-container'>
+        <div className='statistics-container'>
           <PeopleCard people={people} />
           <MapCard />
         </div>
