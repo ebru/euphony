@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { fetchUserStartAsync } from '../../redux/user/user.actions';
-import { selectCurrentUser, selectIsUserFetching } from '../../redux/user/user.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-import MostPlayed from '../../components/MostPlayed/MostPlayed';
+import { default as MostPlayed } from '../../components/MostPlayed/MostPlayed.container';
 import PeopleCard from '../../components/PeopleCard/PeopleCard';
 import MapCard from '../../components/MapCard/MapCard';
 
 import './Dashboard.scss';
 
 const Dashboard = props => {
-  const { fetchUserStartAsync, currentUser: { mostPlayed } } = props;
+  const { fetchUserStartAsync } = props;
 
   useEffect(() => {
     fetchUserStartAsync();
@@ -34,7 +34,7 @@ const Dashboard = props => {
   return (
     <div className='Main-container'>
       <div className='Dashboard-container'>
-        <MostPlayed mostPlayed={mostPlayed} />
+        <MostPlayed />
         <div className='statistics-container'>
           <PeopleCard people={people} />
           <MapCard />
@@ -45,7 +45,6 @@ const Dashboard = props => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isUserFetching: selectIsUserFetching,
   currentUser: selectCurrentUser
 });
 

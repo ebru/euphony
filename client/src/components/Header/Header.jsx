@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import UserDropdown from '../UserDropdown/UserDropdown';
+import { default as UserDropdown } from '../UserDropdown/UserDropdown.container';
 
 import { createStructuredSelector } from 'reselect';
 import { selectIsAuthed } from '../../redux/auth/auth.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './Header.scss';
 
-const Header = ({ isAuthed, currentUser }) => (
+const Header = ({ isAuthed }) => (
   <header className='Main-header'>
     <div className='Main-header-container'>
       <div className='logo-wrapper'>
@@ -18,7 +17,7 @@ const Header = ({ isAuthed, currentUser }) => (
       {
         isAuthed ?
           <div className='User-wrapper'>
-            <UserDropdown userProfileImage={currentUser.profileImage} />
+            <UserDropdown />
           </div> : null
       }
     </div>
@@ -26,8 +25,7 @@ const Header = ({ isAuthed, currentUser }) => (
 );
 
 const mapStateToProps = createStructuredSelector({
-  isAuthed: selectIsAuthed,
-  currentUser: selectCurrentUser
+  isAuthed: selectIsAuthed
 });
 
 export default connect(
