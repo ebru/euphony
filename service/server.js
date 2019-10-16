@@ -27,7 +27,7 @@ mongoose.connection.once('open', () => {
 app.use('/api/graphql', graphqlHTTP({
     schema: schema,
     // Disable graphiql on production
-    graphiql: true
+    graphiql: process.env.NODE_ENV === 'development'
 }));
 
 // Use routes
