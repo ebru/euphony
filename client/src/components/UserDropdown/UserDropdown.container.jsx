@@ -5,15 +5,17 @@ import { gql } from 'apollo-boost';
 import UserDropdown from './UserDropdown';
 
 const GET_USER = gql`
-    {
-        user(sid: "st943c9lgd92wk98aw3bfxcvb") {
+    query user($sid: String!) {
+        user(sid: $sid) {
             profileImage
         }
     }
 `;
 
 const UserDropdownContainer = () => (
-    <Query query={GET_USER}>
+    <Query
+        query={GET_USER}
+        variables={{ sid: "st943c9lgd92wk98aw3bfxcvb" }}>
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;

@@ -6,8 +6,8 @@ import MostPlayed from './MostPlayed';
 import Spinner from './../Spinner/Spinner';
 
 const GET_MOST_PLAYED = gql`
-    {
-        user(sid: "st943c9lgd92wk98aw3bfxcvb") {
+    query user($sid: String!) {
+        user(sid: $sid) {
             mostPlayed {
                 name
                 artistName
@@ -17,7 +17,9 @@ const GET_MOST_PLAYED = gql`
 `;
 
 const MostPlayedContainer = () => (
-    <Query query={GET_MOST_PLAYED}>
+    <Query
+        query={GET_MOST_PLAYED}
+        variables={{ sid: "st943c9lgd92wk98aw3bfxcvb" }}>
         {
             ({ loading, data }) => {
                 if (loading) return <Spinner />;

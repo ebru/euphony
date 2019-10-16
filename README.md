@@ -7,7 +7,7 @@ Here comes the Euphony.
 https://euphony.me
 
 **Technologies used;**
-- React with Redux
+- React with ~~Redux and Thunk~~, updated with Apollo
 - Node.js with Express
 - Spotify OAuth for authentication
 - Docker for containerization
