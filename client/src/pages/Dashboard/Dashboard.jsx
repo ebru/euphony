@@ -1,23 +1,12 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React from 'react';
 
-import { fetchUserStartAsync } from '../../redux/user/user.actions';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
-
-import { default as MostPlayed } from '../../components/MostPlayed/MostPlayed.container';
-import PeopleCard from '../../components/PeopleCard/PeopleCard';
-import MapCard from '../../components/MapCard/MapCard';
+import { default as MostPlayed } from './../../components/MostPlayed/MostPlayed.container';
+import PeopleCard from './../../components/PeopleCard/PeopleCard';
+import MapCard from './../../components/MapCard/MapCard';
 
 import './Dashboard.scss';
 
-const Dashboard = props => {
-  const { fetchUserStartAsync } = props;
-
-  useEffect(() => {
-    fetchUserStartAsync();
-  }, [fetchUserStartAsync]);
-
+const Dashboard = () => {
   const people = [
     {
       "id": "1",
@@ -44,17 +33,4 @@ const Dashboard = props => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchUserStartAsync: () => dispatch(fetchUserStartAsync())
-  }
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dashboard);
+export default Dashboard;
