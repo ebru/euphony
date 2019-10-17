@@ -1,6 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
+import Cookies from 'js-cookie';
 
 import UserDropdown from './UserDropdown';
 
@@ -15,7 +16,7 @@ const GET_USER = gql`
 const UserDropdownContainer = () => (
     <Query
         query={GET_USER}
-        variables={{ sid: "st943c9lgd92wk98aw3bfxcvb" }}>
+        variables={{ sid: Cookies.get('currentUserSid') }}>
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;

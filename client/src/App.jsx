@@ -32,14 +32,14 @@ const LandingRoute = ({ isAuthed }) => {
 
 const LogoutHandler = () => {
   useEffect(() => {
-    Cookies.remove('userToken');
+    Cookies.remove('currentUserSid');
   });
 
   return window.location = '/';
 };
 
 const App = () => {
-  const isAuthed = Cookies.get('userToken') ? true : false
+  const isAuthed = Cookies.get('currentUserSid') ? true : false
 
   return (
     <div>

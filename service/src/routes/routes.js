@@ -81,6 +81,8 @@ router.get('/callback', (req, res) => {
             mostPlayedSid: mostPlayedData.id ? mostPlayedData.id : null
           };
 
+          // console.log(`user sid: ${user.sid}`);
+
           User.findOneAndUpdate(
             { sid: userData.id },
             { $set: user },
@@ -108,15 +110,23 @@ router.get('/callback', (req, res) => {
                 console.log('Error occured while saving the song: ' + mostPlayedData.id);
             }
           );
+
+          return user.sid;
         } catch (error) {
           console.error(error)
         }
       };
 
-      addUser();
+      addUser().then(
+        currentUserSid => {
+          const cookieConfig = {
+            maxAge: 3600000
+          };
 
-      res.cookie('userToken', accessToken, { maxAge: 3600000 });
-      res.redirect(DASHBOARD_URI);
+          res.cookie('currentUserSid', currentUserSid, cookieConfig);
+          res.redirect(DASHBOARD_URI);
+        }
+      );
     }
   });
 });

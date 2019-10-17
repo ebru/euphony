@@ -6,7 +6,7 @@ import { default as UserDropdown } from '../UserDropdown/UserDropdown.container'
 import './Header.scss';
 
 const Header = () => {
-  const isAuthed = Cookies.get('userToken') ? true : false
+  const isAuthed = Cookies.get('currentUserSid') ? true : false
 
   return (
     <header className='Main-header'>
