@@ -4,8 +4,14 @@ import {
     GraphQLSchema,
     GraphQLID,
     GraphQLList,
-    GraphQLNonNull
+    GraphQLNonNull,
+    GraphQLBoolean
 } from 'graphql';
+
+import jwt from 'jsonwebtoken';
+
+// JWT secret key
+const JWT_SECRET = process.env.JWT_SECRET;
 
 import User from '../models/user';
 import Song from '../models/song';
@@ -46,9 +52,32 @@ const SongType = new GraphQLObjectType({
     })
 });
 
+const AuthType = new GraphQLObjectType({
+    name: 'Auth',
+    fields: () => ({
+        isAuthed: { type: GraphQLBoolean }
+    })
+});
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
+        authenticate: {
+            type: AuthType,
+            args: { accessToken: { type: GraphQLString } },
+            resolve(parent, args) {
+                const { accessToken } = args;
+                let isAuthed = false;
+
+                jwt.verify(accessToken, JWT_SECRET, function (err, decoded) {
+                    if (!err) isAuthed = true;
+                });
+
+                return {
+                    isAuthed
+                }
+            }
+        },
         user: {
             type: UserType,
             args: { sid: { type: GraphQLString } },

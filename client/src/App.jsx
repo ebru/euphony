@@ -40,7 +40,7 @@ const LogoutHandler = () => {
 
 const App = ({ isAuthed }) => (
   <div>
-    <Header />
+    <Header isAuthed={isAuthed} />
     <Switch>
       <LandingRoute exact path='/' isAuthed={isAuthed} />
       <Route path='/logout' component={LogoutHandler} />
