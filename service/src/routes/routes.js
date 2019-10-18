@@ -2,6 +2,8 @@ import express from 'express';
 import request from 'request';
 import querystring from 'querystring';
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
 import User from '../models/user';
 import Song from '../models/song';
 
@@ -13,8 +15,18 @@ const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const DASHBOARD_URI = process.env.DASHBOARD_URI;
 
+// JWT secret key
+const JWT_SECRET = process.env.JWT_SECRET;
+
 // Test endpoint
 router.get('/test', (err, res) => {
+  res.status(200).json({
+    working: true
+  });
+});
+
+// Test endpoint
+router.get('/authenticate', (err, res) => {
   res.status(200).json({
     working: true
   });
@@ -58,11 +70,11 @@ router.get('/callback', (req, res) => {
 
   request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      const accessToken = body.access_token;
+      const spotifyToken = body.access_token;
 
       const addUser = async () => {
         const config = {
-          headers: { 'Authorization': 'Bearer ' + accessToken }
+          headers: { 'Authorization': 'Bearer ' + spotifyToken }
         };
 
         try {
@@ -80,8 +92,6 @@ router.get('/callback', (req, res) => {
             profileUrl: userData.uri ? userData.uri : null,
             mostPlayedSid: mostPlayedData.id ? mostPlayedData.id : null
           };
-
-          // console.log(`user sid: ${user.sid}`);
 
           User.findOneAndUpdate(
             { sid: userData.id },
@@ -111,19 +121,29 @@ router.get('/callback', (req, res) => {
             }
           );
 
-          return user.sid;
+          const tokenPayload = {
+            sid: user.sid
+          };
+
+          const accessToken = jwt.sign(
+            tokenPayload,
+            JWT_SECRET,
+            { expiresIn: 3600000 }
+          );
+
+          return accessToken;
         } catch (error) {
           console.error(error)
         }
       };
 
       addUser().then(
-        currentUserSid => {
+        accessToken => {
           const cookieConfig = {
             maxAge: 3600000
           };
-
-          res.cookie('currentUserSid', currentUserSid, cookieConfig);
+          
+          res.cookie('accessToken', accessToken, cookieConfig);
           res.redirect(DASHBOARD_URI);
         }
       );
