@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -7,9 +6,6 @@ import Homepage from './pages/Homepage/Homepage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-
-import { createStructuredSelector } from 'reselect';
-import { selectIsAuthed } from './redux/auth/auth.selectors';
 
 import './App.scss';
 
@@ -36,14 +32,14 @@ const LandingRoute = ({ isAuthed }) => {
 
 const LogoutHandler = () => {
   useEffect(() => {
-    Cookies.remove('userToken');
+    Cookies.remove('currentUserSid');
   });
 
   return window.location = '/';
 };
 
-const App = props => {
-  const { isAuthed } = props;
+const App = () => {
+  const isAuthed = Cookies.get('currentUserSid') ? true : false
 
   return (
     <div>
@@ -58,10 +54,4 @@ const App = props => {
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  isAuthed: selectIsAuthed
-});
-
-export default connect(
-  mapStateToProps
-)(App);
+export default App;

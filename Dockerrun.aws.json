@@ -47,7 +47,7 @@
       "name": "service",
       "image": "ebrukaya/euphony_service",
       "hostname": "service",
-      "essential": false,
+      "essential": true,
       "memory": 128
     }
   ]

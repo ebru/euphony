@@ -24,8 +24,7 @@ services:
   service:
     container_name: service
     image: euphony_service
+    restart: always
     build:
       context: ./
       dockerfile: infra/prod/docker/service/Dockerfile
-    env_file:
-    - ./service/.env

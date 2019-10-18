@@ -1,23 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-
-import { store, persistor } from './redux/store';
+import { ApolloProvider } from 'react-apollo';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-boost';
 
 import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 
+let API_URL = 'https://localhost/api/graphql';
+
+if (process.env.NODE_ENV === 'production') {
+    API_URL = 'https://euphony.me/api/graphql'
+}
+
+const httpLink = createHttpLink({
+    uri: API_URL
+});
+
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+    link: httpLink,
+    cache
+});
+
 ReactDOM.render(
-    <Provider store={store}>
+    <ApolloProvider client={client}>
         <BrowserRouter>
-            <PersistGate persistor={persistor}>
-                <App />
-            </PersistGate>
+            <App />
         </BrowserRouter>
-    </Provider>,
+    </ApolloProvider>,
     document.getElementById('root')
 );
 

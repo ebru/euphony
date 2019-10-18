@@ -1,35 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import Cookies from 'js-cookie';
 
-import UserDropdown from '../UserDropdown/UserDropdown';
-
-import { createStructuredSelector } from 'reselect';
-import { selectIsAuthed } from '../../redux/auth/auth.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { default as UserDropdown } from '../UserDropdown/UserDropdown.container';
 
 import './Header.scss';
 
-const Header = ({ isAuthed, currentUser }) => (
-  <header className='Main-header'>
-    <div className='Main-header-container'>
-      <div className='logo-wrapper'>
-        euphony.
+const Header = () => {
+  const isAuthed = Cookies.get('currentUserSid') ? true : false
+
+  return (
+    <header className='Main-header'>
+      <div className='Main-header-container'>
+        <div className='logo-wrapper'>
+          euphony.
       </div>
-      {
-        isAuthed ?
-          <div className='User-wrapper'>
-            <UserDropdown userProfileImage={currentUser.profileImage} />
-          </div> : null
-      }
-    </div>
-  </header>
-);
+        {
+          isAuthed ?
+            <div className='User-wrapper'>
+              <UserDropdown />
+            </div> : null
+        }
+      </div>
+    </header>
+  )
+};
 
-const mapStateToProps = createStructuredSelector({
-  isAuthed: selectIsAuthed,
-  currentUser: selectCurrentUser
-});
-
-export default connect(
-  mapStateToProps
-)(Header);
+export default Header;
