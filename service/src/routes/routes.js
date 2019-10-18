@@ -25,13 +25,6 @@ router.get('/test', (err, res) => {
   });
 });
 
-// Test endpoint
-router.get('/authenticate', (err, res) => {
-  res.status(200).json({
-    working: true
-  });
-});
-
 // Login endpoint
 router.get('/login', (req, res) => {
   // Access scope to authorize
@@ -142,7 +135,7 @@ router.get('/callback', (req, res) => {
           const cookieConfig = {
             maxAge: 3600000
           };
-          
+
           res.cookie('accessToken', accessToken, cookieConfig);
           res.redirect(DASHBOARD_URI);
         }

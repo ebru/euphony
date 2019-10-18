@@ -7,7 +7,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-boost';
 
 import './index.css';
-import App from './App.jsx';
+import { default as App } from './App.container';
 import * as serviceWorker from './serviceWorker';
 
 let API_URL = 'https://localhost/api/graphql';

@@ -38,20 +38,16 @@ const LogoutHandler = () => {
   return window.location = '/';
 };
 
-const App = () => {
-  const isAuthed = Cookies.get('accessToken') ? true : false
-
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <LandingRoute exact path='/' isAuthed={isAuthed} />
-        <Route path='/logout' component={LogoutHandler} />
-        <PrivateRoute isAuthed={isAuthed} path='/dashboard' component={Dashboard} />
-      </Switch>
-      <Footer />
-    </div>
-  );
-}
+const App = ({ isAuthed }) => (
+  <div>
+    <Header />
+    <Switch>
+      <LandingRoute exact path='/' isAuthed={isAuthed} />
+      <Route path='/logout' component={LogoutHandler} />
+      <PrivateRoute isAuthed={isAuthed} path='/dashboard' component={Dashboard} />
+    </Switch>
+    <Footer />
+  </div>
+);
 
 export default App;
