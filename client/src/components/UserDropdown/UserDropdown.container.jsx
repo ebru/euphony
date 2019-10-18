@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import Cookies from 'js-cookie';
+import jwtDecode from 'jwt-decode';
 
 import UserDropdown from './UserDropdown';
 
@@ -13,10 +14,17 @@ const GET_USER = gql`
     }
 `;
 
+const getCurrentUserId = () => {
+    const accessToken = Cookies.get('accessToken');
+    const { sid } = jwtDecode(accessToken);
+
+    return sid;
+};
+
 const UserDropdownContainer = () => (
     <Query
         query={GET_USER}
-        variables={{ sid: Cookies.get('currentUserSid') }}>
+        variables={{ sid: getCurrentUserId() }}>
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;
