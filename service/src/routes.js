@@ -4,8 +4,8 @@ import querystring from 'querystring';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
-import User from '../models/user';
-import Song from '../models/song';
+import User from './models/user.model';
+import Song from './models/song.model';
 
 const router = express.Router();
 
@@ -20,13 +20,6 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // Test endpoint
 router.get('/test', (err, res) => {
-  res.status(200).json({
-    working: true
-  });
-});
-
-// Test endpoint
-router.get('/authenticate', (err, res) => {
   res.status(200).json({
     working: true
   });
@@ -142,7 +135,7 @@ router.get('/callback', (req, res) => {
           const cookieConfig = {
             maxAge: 3600000
           };
-          
+
           res.cookie('accessToken', accessToken, cookieConfig);
           res.redirect(DASHBOARD_URI);
         }
