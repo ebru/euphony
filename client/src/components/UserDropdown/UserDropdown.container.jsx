@@ -7,8 +7,8 @@ import jwtDecode from 'jwt-decode';
 import UserDropdown from './UserDropdown';
 
 const GET_USER = gql`
-    query user($_id: ID!) {
-        user(_id: $_id) {
+    query getUser($userId: ID!) {
+        getUser(userId: $userId) {
             profileImage
         }
     }
@@ -24,11 +24,13 @@ const getCurrentUserId = () => {
 const UserDropdownContainer = () => (
     <Query
         query={GET_USER}
-        variables={{ _id: getCurrentUserId() }}>
+        variables={{ userId: getCurrentUserId() }}>
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;
-                return <UserDropdown userProfileImage={data.user.profileImage} />
+                
+                const { profileImage } = data.getUser;
+                return <UserDropdown profileImage={profileImage} />
             }
         }
     </Query>

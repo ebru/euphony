@@ -1,8 +1,8 @@
 import Song from './../models/song.model';
 
 const songRepository = {
-    getSong: _id => {
-        return Song.findById(_id);
+    getSong: songId => {
+        return Song.findById(songId);
     },
     upsertSong(songToUpsert) {
         const upsertedSong = Song.findOneAndUpdate(

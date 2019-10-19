@@ -1,8 +1,8 @@
 import User from './../models/user.model';
 
 const userRepository = {
-    getUser: _id => {
-        return User.findById(_id);
+    getUser: userId => {
+        return User.findById(userId);
     },
     getUsersByMostPlayedId: mostPlayedId => {
         return User.find({ mostPlayedId: mostPlayedId });
