@@ -1,6 +1,6 @@
 import User from './../models/user.model';
 
-const userResolver = {
+const userRepository = {
     getUser: sid => {
         return User.findOne({ sid: sid });
     },
@@ -10,10 +10,17 @@ const userResolver = {
     getUsersByMostPlayedSid: mostPlayedSid => {
         return User.find({ mostPlayedSid: mostPlayedSid });
     },
-    addUser(userToAdd) {
-        const user = new User(userToAdd);
-        return user.save();
+    upsertUser(userToUpsert) {
+        return User.findOneAndUpdate(
+            { sid: userToUpsert.sid },
+            { $set: userToUpsert },
+            { new: true, upsert: true },
+            (error, result) => {
+                if (error)
+                    console.log('Error occured while saving the user.');
+            }
+        );
     }
 };
 
-export default userResolver;
+export default userRepository;

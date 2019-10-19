@@ -4,7 +4,7 @@ import songType from './../../types/song.type';
 import songRepository from './../../repositories/song.repository';
 
 const songMutation = {
-    addSong: {
+    upsertSong: {
         type: songType,
         args: {
             sid: { type: new GraphQLNonNull(GraphQLString) },
@@ -14,7 +14,7 @@ const songMutation = {
             coverImage: { type: GraphQLString }
         },
         resolve(parent, args) {
-            const songToAdd = {
+            const songToUpsert = {
                 sid: args.sid,
                 name: args.name,
                 artistName: args.artistName,
@@ -22,7 +22,7 @@ const songMutation = {
                 coverImage: args.coverImage
             };
 
-            return songRepository.addSong(songToAdd);
+            return songRepository.upsertSong(songToUpsert);
         }
     }
 };

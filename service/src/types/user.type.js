@@ -10,7 +10,7 @@ import songRepository from './../repositories/song.repository';
 const userType = new GraphQLObjectType({
     name: 'User',
     fields: () => ({
-        id: { type: GraphQLID },
+        _id: { type: GraphQLID },
         sid: { type: GraphQLString },
         name: { type: GraphQLString },
         country: { type: GraphQLString },

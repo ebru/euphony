@@ -4,7 +4,7 @@ import userType from './../../types/user.type';
 import userRepository from './../../repositories/user.repository';
 
 const userMutation = {
-    addUser: {
+    upsertUser: {
         type: userType,
         args: {
             sid: { type: new GraphQLNonNull(GraphQLString) },
@@ -15,7 +15,7 @@ const userMutation = {
             mostPlayedSid: { type: GraphQLString }
         },
         resolve(parent, args) {
-            const userToAdd = {
+            const userToUpsert = {
                 sid: args.sid,
                 name: args.name,
                 country: args.country,
@@ -24,7 +24,7 @@ const userMutation = {
                 mostPlayedSid: args.mostPlayedSid
             };
 
-            return userRepository.addUser(userToAdd);
+            return userRepository.upsertUser(userToUpsert);
         }
     }
 };

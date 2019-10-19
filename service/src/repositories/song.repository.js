@@ -1,16 +1,23 @@
 import Song from './../models/song.model';
 
-const songResolver = {
+const songRepository = {
     getSong: sid => {
         return Song.findOne({ sid: sid });
     },
     getSongs: () => {
         return Song.find({});
     },
-    addSong(songToAdd) {
-        const song = new Song(songToAdd);
-        return song.save();
+    upsertSong(songToUpsert) {
+        return Song.findOneAndUpdate(
+            { sid: songToUpsert.sid },
+            { $set: songToUpsert },
+            { upsert: true, new: true },
+            (error, result) => {
+                if (error)
+                    console.log('Error occured while saving the song.');
+            }
+        );
     }
 };
 
-export default songResolver;
+export default songRepository;
