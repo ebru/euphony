@@ -8,8 +8,6 @@ import mongoose from 'mongoose';
 import routes from './src/routes/routes';
 import schema from './src/schema/schema';
 
-const app = express();
-
 // Db connection config
 const DB_CONNECT_URL = process.env.DB_CONNECT_URL;
 
@@ -23,23 +21,17 @@ mongoose.connection.once('open', () => {
     console.log('Connected to database.');
 });
 
-// Use graphql
+const app = express();
+
+app.use('/api', routes);
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(cors());
+
 app.use('/api/graphql', graphqlHTTP({
-    schema: schema,
+    schema,
     // Disable graphiql on production
     graphiql: process.env.NODE_ENV === 'development'
 }));
-
-// Use routes
-app.use('/api', routes);
-
-// Use cookie parser
-app.use(cookieParser());
-
-// Use body parser
-app.use(bodyParser.json());
-
-// Use cors
-app.use(cors());
 
 app.listen(5000, () => console.log('Listening on 5000'));

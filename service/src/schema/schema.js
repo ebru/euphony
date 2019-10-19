@@ -5,16 +5,9 @@ import {
     GraphQLID,
     GraphQLList,
     GraphQLNonNull,
-    GraphQLBoolean
 } from 'graphql';
 
-import jwt from 'jsonwebtoken';
-
-// JWT secret key
-const JWT_SECRET = process.env.JWT_SECRET;
-
-import User from '../models/user';
-import Song from '../models/song';
+import resolvers from './../resolvers/resolvers';
 
 const UserType = new GraphQLObjectType({
     name: 'User',
@@ -27,8 +20,8 @@ const UserType = new GraphQLObjectType({
         profileUrl: { type: GraphQLString },
         mostPlayed: {
             type: SongType,
-            resolve(parent, args) {
-                return Song.findOne({ sid: parent.mostPlayedSid });
+            resolve({ mostPlayedSid }, args) {
+                return resolvers.getSong(mostPlayedSid);
             }
         }
     })
@@ -45,63 +38,40 @@ const SongType = new GraphQLObjectType({
         coverImage: { type: GraphQLString },
         users: {
             type: new GraphQLList(UserType),
-            resolve(parent, args) {
-                return User.find({ mostPlayedSid: parent.sid });
+            resolve({ sid }, args) {
+                return resolvers.getUsersByMostPlayedSid(sid);
             }
         }
-    })
-});
-
-const AuthType = new GraphQLObjectType({
-    name: 'Auth',
-    fields: () => ({
-        isAuthed: { type: GraphQLBoolean }
     })
 });
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        authenticate: {
-            type: AuthType,
-            args: { accessToken: { type: GraphQLString } },
-            resolve(parent, args) {
-                const { accessToken } = args;
-                let isAuthed = false;
-
-                jwt.verify(accessToken, JWT_SECRET, function (err, decoded) {
-                    if (!err) isAuthed = true;
-                });
-
-                return {
-                    isAuthed
-                }
-            }
-        },
         user: {
             type: UserType,
             args: { sid: { type: GraphQLString } },
-            resolve(parent, args) {
-                return User.findOne({ sid: args.sid });
+            resolve(parent, { sid }) {
+                return resolvers.getUser(sid);
             }
         },
         song: {
             type: SongType,
             args: { sid: { type: GraphQLString } },
-            resolve(parent, args) {
-                return Song.findOne({ sid: args.sid });
+            resolve(parent, { sid }) {
+                return resolvers.getSong(sid);
             }
         },
         users: {
             type: new GraphQLList(UserType),
             resolve(parent, args) {
-                return User.find({});
+                return resolvers.getUsers();
             }
         },
         songs: {
             type: new GraphQLList(SongType),
             resolve(parent, args) {
-                return Song.find({});
+                return resolvers.getSongs();
             }
         }
     }
@@ -121,16 +91,16 @@ const Mutation = new GraphQLObjectType({
                 mostPlayedSid: { type: GraphQLString }
             },
             resolve(parent, args) {
-                let user = new User({
+                const userToAdd = {
                     sid: args.sid,
                     name: args.name,
                     country: args.country,
                     profileImage: args.profileImage,
                     profileUrl: args.profileUrl,
                     mostPlayedSid: args.mostPlayedSid
-                });
+                };
 
-                return user.save();
+                return resolvers.addUser(userToAdd);
             }
         },
         addSong: {
@@ -143,15 +113,15 @@ const Mutation = new GraphQLObjectType({
                 coverImage: { type: GraphQLString }
             },
             resolve(parent, args) {
-                let song = new Song({
+                const songToAdd = {
                     sid: args.sid,
                     name: args.name,
                     artistName: args.artistName,
                     previewUrl: args.previewUrl,
                     coverImage: args.coverImage
-                });
+                };
 
-                return song.save();
+                return resolvers.addSong(songToAdd);
             }
         }
     }
