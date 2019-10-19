@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const SongSchema = new Schema({
+const songSchema = new Schema({
     sid: {
         type: String,
         unique: true
@@ -12,4 +12,7 @@ const SongSchema = new Schema({
     coverImage: String
 });
 
-export default mongoose.model('Song', SongSchema);
+export default mongoose.model(
+    'Song',
+    songSchema
+);

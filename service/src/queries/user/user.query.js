@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLList } from 'graphql';
+import { GraphQLID } from 'graphql';
 
 import userType from './../../types/user.type';
 import userRepository from './../../repositories/user.repository';
@@ -6,15 +6,9 @@ import userRepository from './../../repositories/user.repository';
 const userQuery = {
     user: {
         type: userType,
-        args: { sid: { type: GraphQLString } },
-        resolve(parent, { sid }) {
-            return userRepository.getUser(sid);
-        }
-    },
-    users: {
-        type: new GraphQLList(userType),
-        resolve(parent, args) {
-            return userRepository.getUsers();
+        args: { _id: { type: GraphQLID } },
+        resolve(parent, { _id }) {
+            return userRepository.getUser(_id);
         }
     }
 };
