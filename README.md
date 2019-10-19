@@ -4,7 +4,7 @@ I decided to make a little side project in my free time to try some technologies
 
 Here comes the Euphony.
 
-https://euphony.me
+http://euphony.me
 
 **Technologies used;**
 - React with ~~Redux and Thunk~~, updated with Apollo
