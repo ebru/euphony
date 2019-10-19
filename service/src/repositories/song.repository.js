@@ -1,6 +1,6 @@
-import Song from './../../models/song';
+import Song from './../models/song.model';
 
-const SongResolver = {
+const songResolver = {
     getSong: sid => {
         return Song.findOne({ sid: sid });
     },
@@ -13,4 +13,4 @@ const SongResolver = {
     }
 };
 
-export default SongResolver;
+export default songResolver;

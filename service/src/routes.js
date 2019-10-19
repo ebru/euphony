@@ -4,8 +4,8 @@ import querystring from 'querystring';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
-import User from '../models/user';
-import Song from '../models/song';
+import User from './models/user.model';
+import Song from './models/song.model';
 
 const router = express.Router();
 

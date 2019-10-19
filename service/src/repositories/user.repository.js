@@ -1,6 +1,6 @@
-import User from './../../models/user';
+import User from './../models/user.model';
 
-const UserResolver = {
+const userResolver = {
     getUser: sid => {
         return User.findOne({ sid: sid });
     },
@@ -16,4 +16,4 @@ const UserResolver = {
     }
 };
 
-export default UserResolver;
+export default userResolver;
