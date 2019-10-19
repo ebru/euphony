@@ -1,25 +1,20 @@
 import User from './../models/user.model';
 
 const userRepository = {
-    getUser: sid => {
-        return User.findOne({ sid: sid });
+    getUser: _id => {
+        return User.findById(_id);
     },
-    getUsers: () => {
-        return User.find({});
-    },
-    getUsersByMostPlayedSid: mostPlayedSid => {
-        return User.find({ mostPlayedSid: mostPlayedSid });
+    getUsersByMostPlayedId: mostPlayedId => {
+        return User.find({ mostPlayedId: mostPlayedId });
     },
     upsertUser(userToUpsert) {
-        return User.findOneAndUpdate(
+        const upsertedUser = User.findOneAndUpdate(
             { sid: userToUpsert.sid },
             { $set: userToUpsert },
-            { new: true, upsert: true },
-            (error, result) => {
-                if (error)
-                    console.log('Error occured while saving the user.');
-            }
+            { new: true, upsert: true }
         );
+
+        return upsertedUser;
     }
 };
 

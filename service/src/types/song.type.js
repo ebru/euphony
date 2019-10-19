@@ -19,8 +19,8 @@ const songType = new GraphQLObjectType({
         coverImage: { type: GraphQLString },
         users: {
             type: new GraphQLList(userType),
-            resolve({ sid }, args) {
-                return userRepository.getUsersByMostPlayedSid(sid);
+            resolve({ _id }, args) {
+                return userRepository.getUsersByMostPlayedId(_id);
             }
         }
     })

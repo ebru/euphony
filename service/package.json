@@ -1,11 +1,11 @@
 {
   "name": "service",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm server.js",
-    "start-dev": "nodemon -r esm server.js"
+    "start": "node -r esm app.js",
+    "start-dev": "nodemon -r esm app.js"
   },
   "dependencies": {
     "axios": "^0.19.0",

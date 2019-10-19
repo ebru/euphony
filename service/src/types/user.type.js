@@ -18,8 +18,8 @@ const userType = new GraphQLObjectType({
         profileUrl: { type: GraphQLString },
         mostPlayed: {
             type: songType,
-            resolve({ mostPlayedSid }, args) {
-                return songRepository.getSong(mostPlayedSid);
+            resolve({ mostPlayedId }, args) {
+                return songRepository.getSong(mostPlayedId);
             }
         }
     })

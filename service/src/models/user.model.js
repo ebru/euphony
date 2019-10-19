@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
     sid: {
         type: String,
         unique: true
@@ -10,7 +10,13 @@ const UserSchema = new Schema({
     country: String,
     profileImage: String,
     profileUrl: String,
-    mostPlayedSid: String
+    mostPlayedId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Song'
+    }
 });
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model(
+    'User',
+    userSchema
+);

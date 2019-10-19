@@ -8,8 +8,8 @@ import cors from 'cors';
 import routes from './src/routes';
 import schema from './src/schema';
 
-// Db connection config
 const DB_CONNECT_URL = process.env.DB_CONNECT_URL;
+const APP_PORT = 5000;
 
 // Connect to db
 mongoose.connect(
@@ -28,9 +28,14 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/api/graphql', graphqlHTTP({
-    schema,
-    graphiql: process.env.NODE_ENV === 'development' // Disable graphiql on production
-}));
+app.use('/api/graphql',
+    graphqlHTTP({
+        schema,
+        graphiql: process.env.NODE_ENV === 'development' // Disable graphiql on production
+    })
+);
 
-app.listen(5000, () => console.log('Listening on 5000'));
+app.listen(
+    APP_PORT,
+    () => console.log(`Listening on ${APP_PORT}`)
+);
