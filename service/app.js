@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import routes from './src/routes';
 import schema from './src/schema';
+import authMiddleware from './src/middleware/auth.middleware';
 
 const DB_CONNECT_URL = process.env.DB_CONNECT_URL;
 const APP_PORT = 5000;
@@ -23,16 +24,20 @@ mongoose.connection.once('open', () => {
 
 const app = express();
 
-app.use('/api', routes);
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors());
+
+const corsOptions = {
+    credentials: true
+};
+app.use(cors(corsOptions));
+
+app.use('/api', routes);
+
+app.use(authMiddleware);
 
 app.use('/api/graphql',
-    graphqlHTTP({
-        schema,
-        graphiql: process.env.NODE_ENV === 'development' // Disable graphiql on production
-    })
+    graphqlHTTP({ schema })
 );
 
 app.listen(

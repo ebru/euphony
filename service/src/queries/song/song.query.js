@@ -4,11 +4,11 @@ import songType from './../../types/song.type';
 import songRepository from './../../repositories/song.repository';
 
 const songQuery = {
-    song: {
+    getSong: {
         type: songType,
-        args: { _id: { type: GraphQLID } },
-        resolve(parent, { _id }) {
-            return songRepository.getSong(_id);
+        args: { songId: { type: GraphQLID } },
+        resolve(parent, { songId }) {
+            return songRepository.getSong(songId);
         }
     }
 };

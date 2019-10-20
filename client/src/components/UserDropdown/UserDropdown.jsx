@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu, Dropdown, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 
-const UserDropdown = ({ userProfileImage }) => {
+const UserDropdown = ({ profileImage }) => {
     const menu = (
         <Menu>
             <Menu.Item key='0'><Link to='/logout'>Log Out</Link></Menu.Item>
@@ -13,7 +13,7 @@ const UserDropdown = ({ userProfileImage }) => {
         <Dropdown overlay={menu} trigger={['click']} placement='bottomRight'>
             <Link to='#'>
                 <Avatar
-                    src={userProfileImage}
+                    src={profileImage}
                     icon='user'
                     size='large'
                 />

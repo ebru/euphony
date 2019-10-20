@@ -4,11 +4,11 @@ import userType from './../../types/user.type';
 import userRepository from './../../repositories/user.repository';
 
 const userQuery = {
-    user: {
+    getUser: {
         type: userType,
-        args: { _id: { type: GraphQLID } },
-        resolve(parent, { _id }) {
-            return userRepository.getUser(_id);
+        args: { userId: { type: GraphQLID } },
+        resolve(parent, { userId }) {
+            return userRepository.getUser(userId);
         }
     }
 };

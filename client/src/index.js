@@ -17,7 +17,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const httpLink = createHttpLink({
-    uri: API_URL
+    uri: API_URL,
+    credentials: 'same-origin'
 });
 
 const cache = new InMemoryCache();

@@ -8,8 +8,8 @@ import MostPlayed from './MostPlayed';
 import Spinner from './../Spinner/Spinner';
 
 const GET_MOST_PLAYED = gql`
-    query user($_id: ID!) {
-        user(_id: $_id) {
+    query getUser($userId: ID!) {
+        getUser(userId: $userId) {
             mostPlayed {
                 name
                 artistName
@@ -28,12 +28,13 @@ const getCurrentUserId = () => {
 const MostPlayedContainer = () => (
     <Query
         query={GET_MOST_PLAYED}
-        variables={{ _id: getCurrentUserId() }}>
+        variables={{ userId: getCurrentUserId() }}>
         {
             ({ loading, data }) => {
                 if (loading) return <Spinner />;
 
-                return <MostPlayed mostPlayed={data.user.mostPlayed} />
+                const { mostPlayed } = data.getUser;
+                return <MostPlayed mostPlayed={mostPlayed} />
             }
         }
     </Query>
