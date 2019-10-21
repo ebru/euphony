@@ -1,8 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import Cookies from 'js-cookie';
-import jwtDecode from 'jwt-decode';
 
 import UserDropdown from './UserDropdown';
 
@@ -15,10 +13,7 @@ const GET_USER = gql`
 `;
 
 const getCurrentUserId = () => {
-    const accessToken = Cookies.get('accessToken');
-    const { userId } = jwtDecode(accessToken);
-
-    return userId;
+    return localStorage.getItem('currentUserId');
 };
 
 const UserDropdownContainer = () => (
@@ -28,7 +23,7 @@ const UserDropdownContainer = () => (
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;
-                
+
                 const { profileImage } = data.getUser;
                 return <UserDropdown profileImage={profileImage} />
             }

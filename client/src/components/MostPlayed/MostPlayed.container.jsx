@@ -1,8 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import Cookies from 'js-cookie';
-import jwtDecode from 'jwt-decode';
 
 import MostPlayed from './MostPlayed';
 import Spinner from './../Spinner/Spinner';
@@ -19,10 +17,7 @@ const GET_MOST_PLAYED = gql`
 `;
 
 const getCurrentUserId = () => {
-    const accessToken = Cookies.get('accessToken');
-    const { userId } = jwtDecode(accessToken);
-
-    return userId;
+    return localStorage.getItem('currentUserId');
 };
 
 const MostPlayedContainer = () => (

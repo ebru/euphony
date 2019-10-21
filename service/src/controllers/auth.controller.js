@@ -116,7 +116,8 @@ const authController = {
                 addUser().then(
                     accessToken => {
                         const cookieConfig = {
-                            maxAge: 3600000
+                            maxAge: 3600000,
+                            sameSite: true
                         };
 
                         res.cookie('accessToken', accessToken, cookieConfig);
