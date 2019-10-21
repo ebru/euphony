@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-import Homepage from './pages/Homepage/Homepage';
-import Dashboard from './pages/Dashboard/Dashboard';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Homepage from './pages/homepage/homepage.component';
+import Dashboard from './pages/dashboard/dashboard.component';
+import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 
 import './App.scss';
 

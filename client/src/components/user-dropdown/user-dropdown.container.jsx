@@ -1,10 +1,9 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import Cookies from 'js-cookie';
-import jwtDecode from 'jwt-decode';
+import userUtils from './../../utils/user.utils';
 
-import UserDropdown from './UserDropdown';
+import UserDropdown from './user-dropdown.component';
 
 const GET_USER = gql`
     query getUser($userId: ID!) {
@@ -14,21 +13,14 @@ const GET_USER = gql`
     }
 `;
 
-const getCurrentUserId = () => {
-    const accessToken = Cookies.get('accessToken');
-    const { userId } = jwtDecode(accessToken);
-
-    return userId;
-};
-
 const UserDropdownContainer = () => (
     <Query
         query={GET_USER}
-        variables={{ userId: getCurrentUserId() }}>
+        variables={{ userId: userUtils.getCurrentUserId() }}>
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;
-                
+
                 const { profileImage } = data.getUser;
                 return <UserDropdown profileImage={profileImage} />
             }

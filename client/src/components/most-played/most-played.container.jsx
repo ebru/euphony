@@ -1,11 +1,10 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import Cookies from 'js-cookie';
-import jwtDecode from 'jwt-decode';
+import userUtils from './../../utils/user.utils';
 
-import MostPlayed from './MostPlayed';
-import Spinner from './../Spinner/Spinner';
+import MostPlayed from './most-played.component';
+import Spinner from './../spinner/spinner.component';
 
 const GET_MOST_PLAYED = gql`
     query getUser($userId: ID!) {
@@ -18,17 +17,10 @@ const GET_MOST_PLAYED = gql`
     }
 `;
 
-const getCurrentUserId = () => {
-    const accessToken = Cookies.get('accessToken');
-    const { userId } = jwtDecode(accessToken);
-
-    return userId;
-};
-
 const MostPlayedContainer = () => (
     <Query
         query={GET_MOST_PLAYED}
-        variables={{ userId: getCurrentUserId() }}>
+        variables={{ userId: userUtils.getCurrentUserId() }}>
         {
             ({ loading, data }) => {
                 if (loading) return <Spinner />;

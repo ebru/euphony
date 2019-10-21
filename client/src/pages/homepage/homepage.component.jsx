@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon } from 'antd';
 
-import CustomButton from '../../components/CustomButton/CustomButton';
+import CustomButton from '../../components/custom-button/custom-button.component';
 
-import './Homepage.scss';
+import './homepage.styles.scss';
 
 const SpotifySvg = () => (
   <svg xmlns='http://www.w3.org/2000/svg' height='1.5em' width='1.5em' version='1.1' viewBox='0 0 168 168'>
