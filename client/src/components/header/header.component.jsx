@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { default as UserDropdown } from '../UserDropdown/UserDropdown.container';
+import { default as UserDropdown } from '../user-dropdown/user-dropdown.container';
 
-import './Header.scss';
+import './header.styles.scss';
 
 const Header = ({ isAuthed }) => (
   <header className='Main-header'>

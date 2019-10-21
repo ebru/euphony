@@ -3,8 +3,8 @@ import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import userUtils from './../../utils/user.utils';
 
-import MostPlayed from './MostPlayed';
-import Spinner from './../Spinner/Spinner';
+import MostPlayed from './most-played.component';
+import Spinner from './../spinner/spinner.component';
 
 const GET_MOST_PLAYED = gql`
     query getUser($userId: ID!) {

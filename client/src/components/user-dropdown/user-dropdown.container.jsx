@@ -3,7 +3,7 @@ import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import userUtils from './../../utils/user.utils';
 
-import UserDropdown from './UserDropdown';
+import UserDropdown from './user-dropdown.component';
 
 const GET_USER = gql`
     query getUser($userId: ID!) {

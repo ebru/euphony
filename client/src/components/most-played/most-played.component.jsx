@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './MostPlayed.scss';
+import './most-played.styles.scss';
 
 const MostPlayed = props => {
     const { mostPlayed: { name, artistName } } = props;
