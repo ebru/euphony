@@ -1,6 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
+import userUtils from './../../utils/user.utils';
 
 import UserDropdown from './UserDropdown';
 
@@ -12,14 +13,10 @@ const GET_USER = gql`
     }
 `;
 
-const getCurrentUserId = () => {
-    return localStorage.getItem('currentUserId');
-};
-
 const UserDropdownContainer = () => (
     <Query
         query={GET_USER}
-        variables={{ userId: getCurrentUserId() }}>
+        variables={{ userId: userUtils.getCurrentUserId() }}>
         {
             ({ loading, data }) => {
                 if (loading) return <UserDropdown />;
