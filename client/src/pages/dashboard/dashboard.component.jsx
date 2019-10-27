@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { default as MostPlayed } from './../../components/most-played/most-played.container';
+import MostPlayed from './../../components/most-played/most-played.component';
 
 import './dashboard.styles.scss';
 
