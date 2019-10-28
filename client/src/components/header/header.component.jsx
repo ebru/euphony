@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { default as UserDropdown } from '../user-dropdown/user-dropdown.container';
+import UserDropdown from '../user-dropdown/user-dropdown.component';
 
 import './header.styles.scss';
 

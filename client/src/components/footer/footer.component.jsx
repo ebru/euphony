@@ -16,16 +16,14 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer className='footer'>
-            <div className='Main-footer-container'>
-                <div className='left-wrapper'>
-                    <div className='days-passed-container'>
-                        this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
+        <footer className='footer-container'>
+            <div className='left-wrapper'>
+                <div className='days-passed-container'>
+                    this project started {state.daysPassed} days ago for learning purposes, more to go 🥂
                     </div>
-                </div>
-                <div className='right-wrapper'>
-                    <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>github</b></a>
-                </div>
+            </div>
+            <div className='right-wrapper'>
+                <a href='https://github.com/ebru/euphony' target='_blank' rel='noopener noreferrer'><b>github</b></a>
             </div>
         </footer>
     );

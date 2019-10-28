@@ -2,6 +2,10 @@
 
 * {
   box-sizing: border-box;
+}
+
+.main-container {
+  padding: 20px 170px;
 
   a {
     color: #5466ba;
@@ -12,16 +16,12 @@
   }
 }
 
-.Main-container {
-  padding: 20px 170px;
-}
-
 /* 
   Tablets, ipads
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .Main-container {
+  .main-container {
     padding: 40px 45px;
   }
 }
@@ -31,7 +31,7 @@
   */
 
 @media (min-width: 481px) and (max-width: 767px) {
-  .Main-container {
+  .main-container {
     padding: 30px 30px;
   }
 }
@@ -41,7 +41,7 @@
   */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .Main-container {
+  .main-container {
     padding: 20px 15px;
   }
 }

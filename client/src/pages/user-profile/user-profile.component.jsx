@@ -35,7 +35,7 @@ const UserProfile = () => {
     const mostPlayed = data.getUser.mostPlayed;
 
     return (
-        <div className='Main-container'>
+        <div className='main-container'>
             <div className='user-profile-container'>
                 <h1>User Profile</h1>
                 <p>{user.name}</p>

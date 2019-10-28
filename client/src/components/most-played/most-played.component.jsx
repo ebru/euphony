@@ -33,7 +33,7 @@ const MostPlayed = () => {
         <div className='most-played-container'>
             <p><em>most played so far</em></p>
             <h1>{name}</h1>
-            <p><em>{artistName}</em></p>
+            <p><em>by {artistName}</em></p>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-.Dashboard-container {
+.dashboard-container {
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -6,10 +6,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #000;
-
-  .statistics-container {
-    margin-top: 40px;
-    display: flex;
-    width: 100%;
-  }
 }

@@ -1,41 +1,37 @@
-.footer {
+.footer-container {
+  display: flex;
+  height: 60px;
+  max-height: 70px;
+  padding: 30px 170px;
+  align-items: center;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  // border-top: 1px solid #f7f7f7;
   background-color: #fff;
   overflow: hidden;
 
-  .Main-footer-container {
-    display: flex;
-    height: 60px;
-    max-height: 70px;
-    padding: 30px 170px;
-    align-items: center;
+  a {
+    color: #5466ba;
 
-    a {
-      color: #5466ba;
-
-      &:hover {
-        color: #7786c9;
-      }
+    &:hover {
+      color: #7786c9;
     }
+  }
 
-    .left-wrapper {
-      flex: 2;
-      text-align: left;
+  .left-wrapper {
+    flex: 2;
+    text-align: left;
 
-      .days-passed-container {
-        font-size: 13px;
-      }
+    .days-passed-container {
+      font-size: 13px;
     }
+  }
 
-    .right-wrapper {
-      flex: 1;
-      text-align: right;
-      font-style: italic;
-    }
+  .right-wrapper {
+    flex: 1;
+    text-align: right;
+    font-style: italic;
   }
 }
 
@@ -44,10 +40,8 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .footer {
-    .Main-footer-container {
-      padding: 0 45px;
-    }
+  .footer-container {
+    padding: 0 45px;
   }
 }
 
@@ -56,10 +50,8 @@ Low resolution tablets, mobiles
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
-  .footer {
-    .Main-footer-container {
-      padding: 0 30px;
-    }
+  .footer-container {
+    padding: 0 30px;
   }
 }
 
@@ -68,9 +60,7 @@ Most of the smartphones, mobiles
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .footer {
-    .Main-footer-container {
-      padding: 0 15px;
-    }
+  .footer-container {
+    padding: 0 15px;
   }
 }

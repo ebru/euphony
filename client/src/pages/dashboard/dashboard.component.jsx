@@ -6,8 +6,8 @@ import './dashboard.styles.scss';
 
 const Dashboard = () => {
   return (
-    <div className='Main-container'>
-      <div className='Dashboard-container'>
+    <div className='main-container'>
+      <div className='dashboard-container'>
         <MostPlayed />
       </div>
     </div>
