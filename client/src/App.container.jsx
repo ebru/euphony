@@ -15,7 +15,7 @@ const getCurrentUserId = () => {
 };
 
 const AppContainer = () => {
-    const isAuthed = getCurrentUserId() ? true : false;
+    const isAuthed = Cookies.get('accessToken') ? true : false;
 
     localStorage.setItem('currentUserId', getCurrentUserId());
 

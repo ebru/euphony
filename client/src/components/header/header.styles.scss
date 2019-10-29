@@ -1,13 +1,16 @@
+$base-color: #5466ba;
+$bg-color: #fff;
+
 .header-container {
+  align-items: center;
+  background: $bg-color;
+  display: flex;
+  flex-grow: 1;
+  height: 70px;
+  max-width: 100%;
+  padding: 0 170px;
   position: relative;
   z-index: 10;
-  max-width: 100%;
-  background: #fff;
-  display: flex;
-  height: 70px;
-  align-items: center;
-  flex-grow: 1;
-  padding: 0 170px;
 
   .logo-wrapper {
     flex: 1;
@@ -15,7 +18,7 @@
     font-size: 30px;
     font-weight: bold;
     line-height: 0;
-    color: #5466ba;
+    color: $base-color;
   }
 
   .user-wrapper {
@@ -24,10 +27,10 @@
   }
 
   a {
-    color: #5466ba;
+    color: $base-color;
 
     &:hover {
-      color: #5466ba;
+      color: $base-color;
     }
   }
 }

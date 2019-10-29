@@ -1,21 +1,25 @@
+$base-color: #5466ba;
+$base-color-hover: #7786c9;
+$bg-color: #fff;
+
 .footer-container {
+  align-items: center;
+  background-color: $bg-color;
+  bottom: 0;
   display: flex;
   height: 60px;
-  max-height: 70px;
-  padding: 30px 170px;
-  align-items: center;
-  position: fixed;
   left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #fff;
+  max-height: 70px;
   overflow: hidden;
+  padding: 30px 170px;
+  position: fixed;
+  width: 100%;
 
   a {
-    color: #5466ba;
+    color: $base-color;
 
     &:hover {
-      color: #7786c9;
+      color: $base-color-hover;
     }
   }
 
@@ -30,8 +34,8 @@
 
   .right-wrapper {
     flex: 1;
-    text-align: right;
     font-style: italic;
+    text-align: right;
   }
 }
 

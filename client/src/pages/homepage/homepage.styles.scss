@@ -1,14 +1,20 @@
+$base-color: #5466ba;
+$spotify-green: #1db954;
+$white-color: #fff;
+$font-color: #000;
+$light-grey-color: #f7f7f7;
+
 .main-container {
   .homepage-container {
-    text-align: center;
-    background-color: #fff;
+    align-items: center;
+    background-color: $white-color;
+    color: $font-color;
     display: flex;
     flex-direction: column;
-    align-items: center;
     font-size: calc(10px + 2vmin);
-    color: #000;
-    padding-top: 15px;
     padding-bottom: 15px;
+    padding-top: 15px;
+    text-align: center;
 
     .call-to-action {
       font-size: 55px;
@@ -16,23 +22,23 @@
     }
 
     .spofity-login-btn {
-      color: #fff;
-      background-color: #5466ba;
+      background-color: $base-color;
       border: none;
       border-radius: 5px;
-      width: 300px;
-      height: 50px;
+      color: $white-color;
       font-size: 18px;
-      margin-top: 40px;
+      height: 50px;
       line-height: 0;
+      margin-top: 40px;
+      width: 300px;
 
       &:hover {
-        color: #fff;
-        background-color: #1db954;
+        background-color: $spotify-green;
+        color: $white-color;
       }
 
       &:focus {
-        border-color: #1db954;
+        border-color: $spotify-green;
       }
 
       .button-items {
@@ -40,8 +46,8 @@
         align-items: center;
 
         .spotify-icon {
+          color: $white-color;
           font-size: 27px;
-          color: white;
           margin-right: 10px;
         }
       }
@@ -50,7 +56,7 @@
     .description {
       margin-top: 120px;
       font-size: 12px;
-      background-color: #f7f7f7;
+      background-color: $light-grey-color;
       border-radius: 5px;
       padding: 15px;
       width: 60%;
