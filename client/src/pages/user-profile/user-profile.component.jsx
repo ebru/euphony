@@ -1,11 +1,16 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import userUtils from './../../utils/user.utils';
 
 import Spinner from './../../components/spinner/spinner.component';
 
 import './user-profile.styles.scss';
+
+const GET_CURRENT_USER_ID = gql`
+  {
+    currentUserId @client
+  }
+`;
 
 const GET_USER = gql`
     query getUser($userId: ID!) {
@@ -23,9 +28,11 @@ const GET_USER = gql`
 `;
 
 const UserProfile = () => {
+    const { currentUserId } = useQuery(GET_CURRENT_USER_ID).data;
+
     const { data, loading, error } = useQuery(
         GET_USER,
-        { variables: { userId: userUtils.getCurrentUserId() } }
+        { variables: { userId: currentUserId } }
     );
 
     if (loading) return <Spinner />;

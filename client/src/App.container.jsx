@@ -1,4 +1,5 @@
 import React from 'react';
+import { useApolloClient } from "@apollo/react-hooks";
 import Cookies from 'js-cookie';
 import jwtDecode from 'jwt-decode';
 
@@ -16,8 +17,16 @@ const getCurrentUserId = () => {
 
 const AppContainer = () => {
     const isAuthed = Cookies.get('accessToken') ? true : false;
+    const client = useApolloClient();
 
-    localStorage.setItem('currentUserId', getCurrentUserId());
+    // Store current user id in Apollo local cache
+    client.writeData(
+        {
+            data: {
+                currentUserId: getCurrentUserId()
+            }
+        }
+    );
 
     return (
         <App isAuthed={isAuthed} />
