@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { default as MostPlayed } from './../../components/most-played/most-played.container';
+import MostPlayed from './../../components/most-played/most-played.component';
 
 import './dashboard.styles.scss';
 
 const Dashboard = () => {
   return (
-    <div className='Main-container'>
-      <div className='Dashboard-container'>
+    <div className='main-container'>
+      <div className='dashboard-container'>
         <MostPlayed />
       </div>
     </div>
