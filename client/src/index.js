@@ -13,7 +13,7 @@ import * as serviceWorker from './serviceWorker';
 let API_URL = 'https://localhost/api/graphql';
 
 if (process.env.NODE_ENV === 'production') {
-    API_URL = 'http://euphony.me/api/graphql'
+    API_URL = 'https://euphony.me/api/graphql';
 }
 
 const httpLink = createHttpLink({
