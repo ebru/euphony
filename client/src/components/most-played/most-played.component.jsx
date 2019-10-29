@@ -2,10 +2,15 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import userUtils from './../../utils/user.utils';
 import Spinner from './../spinner/spinner.component';
 
 import './most-played.styles.scss';
+
+const GET_CURRENT_USER_ID = gql`
+  {
+    currentUserId @client
+  }
+`;
 
 const GET_MOST_PLAYED = gql`
     query getUser($userId: ID!) {
@@ -19,9 +24,11 @@ const GET_MOST_PLAYED = gql`
 `;
 
 const MostPlayed = () => {
+    const { currentUserId } = useQuery(GET_CURRENT_USER_ID).data;
+
     const { data, loading, error } = useQuery(
         GET_MOST_PLAYED,
-        { variables: { userId: userUtils.getCurrentUserId() } }
+        { variables: { userId: currentUserId } }
     );
 
     if (loading) return <Spinner />;

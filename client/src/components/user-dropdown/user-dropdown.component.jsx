@@ -4,7 +4,11 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Menu, Dropdown, Avatar } from 'antd';
 
-import userUtils from './../../utils/user.utils';
+const GET_CURRENT_USER_ID = gql`
+  {
+    currentUserId @client
+  }
+`;
 
 const GET_USER = gql`
     query getUser($userId: ID!) {
@@ -24,9 +28,11 @@ const menu = (
 );
 
 const UserDropdown = () => {
+    const { currentUserId } = useQuery(GET_CURRENT_USER_ID).data;
+
     const { data, loading } = useQuery(
         GET_USER,
-        { variables: { userId: userUtils.getCurrentUserId() } }
+        { variables: { userId: currentUserId } }
     );
 
     if (loading) return <Avatar icon='user' size='large' />
