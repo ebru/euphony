@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 
 import Spinner from './../../components/spinner/spinner.component';
 
-import './user-profile.styles.scss';
+import { ProfileContainer } from './user-profile.styles';
 
 const GET_CURRENT_USER_ID = gql`
   {
@@ -43,13 +43,13 @@ const UserProfile = () => {
 
     return (
         <div className='main-container'>
-            <div className='user-profile-container'>
+            <ProfileContainer>
                 <h1>User Profile</h1>
                 <p>{user.name}</p>
                 <p>{user.country}</p>
                 <p>{mostPlayed.name}</p>
                 <p>{mostPlayed.artistName}</p>
-            </div>
+            </ProfileContainer>
         </div>
     );
 };
