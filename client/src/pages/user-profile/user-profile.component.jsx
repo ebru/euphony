@@ -51,9 +51,12 @@ const UserProfile = () => {
         <div className='main-container'>
             <ProfileContainer>
                 <ProfileInfo>
-                    <ProfileImage>
-                        <img src={user.profileImage} />
-                    </ProfileImage>
+                    {
+                        data.getUser.profileImage ?
+                            <ProfileImage>
+                                <img src={user.profileImage} />
+                            </ProfileImage> : null
+                    }
                     <div>
                         <h1>{user.name} <CountrySpan>/{user.country}</CountrySpan></h1>
                         <p>{mostPlayed.name}</p>
