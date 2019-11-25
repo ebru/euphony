@@ -13,9 +13,9 @@ export const ProfileContainer = styled.div`
 `
 
 export const ProfileInfo = styled.div`
-    margin-right: 20px;
+    width: 300px;   
+    padding-right: 20px;
     
-
     @media (max-width: 760px) {
         display: flex;
         width: 100%;
